@@ -109,7 +109,7 @@ $(document).ready(function() {
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
         .trigger('appendCache')
-        .trigger('sorton',[ [ [ 2,0 ] ] ]); // Sort table
+        .trigger('sorton',[ [ [ 2,0 ], [ 0,0 ] ] ]); // Sort table
     });
   }
 
