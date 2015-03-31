@@ -48,6 +48,7 @@ $(document).ready(function() {
         $('input#inputMailserver').prop('disabled', false); // Temporary enable input text area
         $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
         $('.btn-submit-check').text('Check another'); // Adjust text of submit button
+        $('.results table').tablesorter( { sortList: [ [ 2,0 ] ] } );
       });
     });
   }
