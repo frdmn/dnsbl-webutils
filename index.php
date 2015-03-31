@@ -38,7 +38,7 @@
         </div><!--/.navbar-header -->
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Check</a></li>
+            <li class="active"><a href="">Check</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container -->
