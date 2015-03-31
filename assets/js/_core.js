@@ -53,6 +53,9 @@ $(document).ready(function() {
   // Enable inputs on page load
   enableInputs();
 
+  // Hide progress bar
+  $('.progress').hide();
+
   // Initialize table sorter
   $('.results table').tablesorter();
 
@@ -60,6 +63,7 @@ $(document).ready(function() {
   var startBlacklistProbes = function (hostToCheck, obj) {
     $('.results tbody').html('');
     resetProgress();
+    $('.progress').show(); // Show progress bar
     $('.results').show(); // Show results table
 
     var requests = [];
@@ -101,6 +105,7 @@ $(document).ready(function() {
     $.when.apply($, requests).done(function() {
       enableInputs();
       $('.results').show();
+      $('.progress').fadeOut();
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
         .trigger('appendCache')
