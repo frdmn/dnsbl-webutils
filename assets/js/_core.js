@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  // Hide progress bar
+  // Hide progress bar on page load
   $('.progress').hide();
 
-  // Hide abort button
+  // Hide abort button on page load
   $('.btn-abort-check').hide();
 
   // On click - submit check
@@ -13,6 +13,5 @@ $(document).ready(function() {
     $('.btn-abort-check').fadeIn(); // Fade in progress bar
     $('.btn-submit-check').prop('disabled', true); // Disable submit button
     $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
-
   })
 });
