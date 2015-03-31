@@ -11,6 +11,7 @@
     '200' => 'not listed',
     '401' => 'missing "ip" GET parameter',
     '402' => 'missing "dnsbl" GET parameter',
+    '403' => 'invalid IP format',
   );
 
   // Check for GET variables
@@ -29,7 +30,7 @@
   // Check DNSBL result
   if (isset($dnsbl_result)) {
     // Check for error codes
-    if ($dnsbl_result == 401 || $dnsbl_result == 402) {
+    if ($dnsbl_result == 401 || $dnsbl_result == 402 || $dnsbl_result == 403 ) {
       $error_message = $status_codes[$dnsbl_result];
     // if no error, store returned data
     } elseif ($dnsbl_result == 200 || $dnsbl_result == 300) {
@@ -54,5 +55,4 @@
 
   // Encode to JSON and display
   echo json_encode($json);
-
 ?>
