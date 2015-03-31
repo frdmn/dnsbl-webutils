@@ -17,7 +17,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title><?php echo $settings['title'] ?></title>
+    <title><?= $settings['title'] ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $settings['website'] ?>">DNSBL Monitor</a>
+          <a class="navbar-brand" href="#"><?= $settings['title'] ?></a>
         </div><!--/.navbar-header -->
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -48,17 +48,42 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>DNSBL Monitor</h1>
+        <h1><?= $settings['title'] ?></h1>
       </div><!--/.jumbotron -->
 
-      <p>test</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+          <span class="sr-only">0% Complete</span>
+        </div>
+      </div><!--/.progress -->
+
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        Enter the hostname or the IP address of your mail server below and hit <strong>Check</strong>.
+      </div><!--/.alert -->
+
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="inputMailserver" class="col-sm-2 control-label">Mail server</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputMailserver" placeholder="Hostname/IP address">
+          </div>
+        </div><!-- /.form-group -->
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default btn-submit-check">Check</button>
+            <a href="" class="btn btn-danger btn-abort-check">Abort</a>
+          </div>
+        </div><!-- /.form-group -->
+      </form><!-- /.form-horizontal -->
+
+      <div class="clearfix"></div>
 
       <footer>
         <hr>
-        <p>&copy; frdmn 2015 - <a href="https://github.com/frdmn/dnsbl-monitor" target="_blank">dnsbl-monitor</a></p>
+        <p>Powered by <a href="https://github.com/frdmn/dnsbl-monitor" target="_blank">dnsbl-monitor</a> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
       </footer>
-    </div> <!-- /container -->
-
+    </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
