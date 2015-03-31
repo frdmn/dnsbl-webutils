@@ -1,6 +1,4 @@
 <?php
-  // Include functions
-  // require_once("functions.php");
 
   // Include configuration file
   if (file_exists('config.php')) {
