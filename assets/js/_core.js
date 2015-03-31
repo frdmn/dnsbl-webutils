@@ -5,17 +5,6 @@ $(document).ready(function() {
   // Hide results on page load
   $('.results').hide();
 
-  // On click - submit check
-  $('.btn-submit-check').on('click', function (e) {
-    e.preventDefault();
-    $('.alert').hide(); // Hide alert
-    $('.btn-abort-check').show(); // Fade in abort button
-    $('input#inputMailserver').prop('disabled', true); // Temporary disable input text area
-    $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
-    $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
-    startBlacklistProbes($('input#inputMailserverIP').val());
-  });
-
   // Function to start the blacklist probes
   var startBlacklistProbes = function (ipToCheck) {
     $.getJSON('dnsbl.json', function(jsonBlacklists) {
@@ -43,9 +32,10 @@ $(document).ready(function() {
         requests.push(promise);
       });
 
+      // Enable stuff again, when all API calls are finished
       $.when.apply($, requests).done(function() {
         $('.btn-abort-check').hide(); // Hide abort button
-        $('input#inputMailserver').prop('disabled', false); // Temporary enable input text area
+        $('input#inputMailserverIP').prop('disabled', false); // Temporary enable input text area
         $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
         $('.btn-submit-check').text('Check another'); // Adjust text of submit button
         $('.results table').tablesorter( { sortList: [ [ 2,0 ] ] } );
@@ -54,7 +44,7 @@ $(document).ready(function() {
   }
 
   // Validate input form
-  $('form.input').formValidation({
+  $('form.form-input').formValidation({
     framework: 'bootstrap'
     , icon: {
       valid: 'glyphicon glyphicon-ok'
@@ -73,6 +63,20 @@ $(document).ready(function() {
         }
       }
     }
+  }).on('success.form.fv', function(e) {
+    // Prevent form submission
+    e.preventDefault();
+
+    // // instances, we can use at a later point
+    // var $form = $(e.target) // The form instance
+    // , fv    = $(e.target).data('formValidation'); // FormValidation instance
+
+    $('.alert').hide(); // Hide alert
+    $('.btn-abort-check').show(); // Fade in abort button
+    $('input#inputMailserverIP').prop('disabled', true); // Temporary disable input text area
+    $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
+    $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
+    startBlacklistProbes($('input#inputMailserverIP').val());
   });
 
   // Show RBL count in jumbotron

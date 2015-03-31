@@ -58,7 +58,7 @@
         Enter the IP address of your mail server below and hit <strong>Check</strong>.
       </div><!--/.alert -->
 
-      <form class="form-horizontal input">
+      <form class="form-horizontal form-input">
         <div class="form-group">
           <label for="inputMailserverIP" class="col-sm-2 control-label">Mail server</label>
           <div class="col-sm-10">
