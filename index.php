@@ -90,7 +90,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Blacklist</th>
               <th>Status <span class="label label-danger label-listings"></span></th>
             </tr>

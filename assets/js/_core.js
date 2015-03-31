@@ -68,20 +68,21 @@ $(document).ready(function() {
 
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
-      var promise = $.get('api/?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
+      var rowId = parseFloat(key) + parseFloat(1)
+      , promise = $.get('api/?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
         if (status === 'success') {
           var jsonProbe = $.parseJSON(data);
           if (jsonProbe.success === true) {
             if (jsonProbe.payload.result === 200) {
               console.log(hostToCheck + ': not listed on "' + jsonProbe.payload.dnsbl + '"');
-              $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
+              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
             } else if (jsonProbe.payload.result === 300) {
               console.log(hostToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
-              $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
+              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
             }
           } else {
             console.log('Error: ' + jsonProbe.error);
-            $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
+            $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
           }
           updateProgress(countTableRows(), obj.blacklists.length);
           updateListingBadge();
