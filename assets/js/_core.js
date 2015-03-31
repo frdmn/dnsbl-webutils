@@ -1,27 +1,45 @@
 $(document).ready(function() {
   /* Functions */
 
+  // Reset progress bar
   function resetProgress(){
     $('.progress-bar').css({ 'width': '0%', 'transition': 'none' });
     $('.progress-bar span').html('');
   }
 
   function updateProgress(current, max){
+    // Calculate percent
     var percent = 100 / max * current;
+    // Adjust width
     $('.progress-bar').css('width', Math.round(percent) + '%');
     $('.progress-bar span').html(current + ' / ' + max);
   }
 
   function countTableRows(){
+    // Return the current amount of rows in our result table
     return $('.results tbody tr').length;
   }
 
-  // Hide cancel button and spinner on page load
-  $('.btn-cancel-check').hide();
-  $('.spinner').hide();
+  // Enable general inputs
+  function enableInputs(){
+    $('.spinner').hide();
+    $('.results').hide();
+    $('.btn-cancel-check').hide();
+    $('input#inputMailserverHost').prop('disabled', false);
+    $('.btn-submit-check').prop('disabled', false);
+  }
 
-  // Hide results on page load
-  $('.results').hide();
+  // Disable general inputs
+  function disableInputs(){
+    $('.spinner').fadeIn();
+    $('.results').show();
+    $('.btn-cancel-check').show();
+    $('input#inputMailserverHost').prop('disabled', true);
+    $('.btn-submit-check').prop('disabled', true);
+  }
+
+  // Enable inputs on page load
+  enableInputs();
 
   // Initialize table sorter
   $('.results table').tablesorter();
@@ -52,15 +70,24 @@ $(document).ready(function() {
           updateProgress(countTableRows(), obj.blacklists.length);
         }
       });
+
+      $('.btn-cancel-check').on('click', function(e) {
+        e.preventDefault();
+        promise.abort();
+        /* jshint ignore:start */
+        delete requests;
+        /* jshint ignore:end */
+        resetProgress();
+        enableInputs()
+      });
+
       requests.push(promise);
     });
 
     // Enable stuff again, when all API calls are finished
     $.when.apply($, requests).done(function() {
-      $('.btn-cancel-check').hide(); // Hide cancel button
-      $('.spinner').fadeOut(); // Fade out spinner
-      $('input#inputMailserverHost').prop('disabled', false); // Temporary enable input text area
-      $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
+      enableInputs();
+      $('.results').show();
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
         .trigger('appendCache')
@@ -98,11 +125,7 @@ $(document).ready(function() {
       // var $form = $(e.target) // The form instance
       // , fv    = $(e.target).data('formValidation'); // FormValidation instance
 
-      $('.alert-hint').hide(); // Hide hint
-      $('.btn-cancel-check').show(); // Show cancel button
-      $('.spinner').fadeIn(); // Fade in spinner
-      $('input#inputMailserverHost').prop('disabled', true); // Temporary disable input text area
-      $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
+      disableInputs();
       $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
       startBlacklistProbes($('input#inputMailserverHost').val(), jsonObj);
     });
