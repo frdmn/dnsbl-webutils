@@ -1,0 +1,12 @@
+{
+  "blacklists": [
+    {
+      "name": "Spamhaus SBL",
+      "hostname": "sbl.spamhaus.org"
+    },
+    {
+      "name": "Spamhaus XBL",
+      "hostname": "xbl.spamhaus.org"
+    }
+  ]
+}
