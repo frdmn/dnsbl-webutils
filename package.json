@@ -1,10 +1,10 @@
 {
-  "name": "blacklist-monitor",
+  "name": "dnsbl-monitor",
   "version": "1.0.0",
   "description": "Web based DNSBL blacklist monitor for your mail servers",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frdmn/blacklist-monitor.git"
+    "url": "https://github.com/frdmn/dnsbl-monitor.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

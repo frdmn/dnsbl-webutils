@@ -1,5 +1,5 @@
-blacklist-monitor
-=================
+dnsbl-monitor
+=============
 
 Web based DNSBL blacklist monitor for your mail servers.
 
