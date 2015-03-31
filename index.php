@@ -58,16 +58,16 @@
         <p>Below you can <a class="a-tooltip" href="#" data-toggle="tooltip" data-original-title="Default tooltip">mass test</a> such <i>DNSBL</i>'s against the IPs of your mail servers to possible listings.</p>
       </div><!--/.jumbotron -->
 
-      <div class="alert alert-warning alert-dismissible" role="alert">
+      <div class="alert alert-warning alert-dismissible alert-hint" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        Enter the IP address of your mail server below and hit <strong>Check</strong>.
+        Enter the IP address or hostname of your mail server below and hit <strong>Check</strong>.
       </div><!--/.alert -->
 
       <form class="form-horizontal form-input">
         <div class="form-group">
-          <label for="inputMailserverIP" class="col-sm-2 control-label">Mail server</label>
+          <label for="inputMailserverHost" class="col-sm-2 control-label">Mail server</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputMailserverIP" name="inputMailserverIP" placeholder="IP address">
+            <input type="text" class="form-control" id="inputMailserverHost" name="inputMailserverHost" placeholder="IP address/hostname">
           </div>
         </div><!-- /.form-group -->
         <div class="form-group">

@@ -1,6 +1,34 @@
 <?php
-  // Include functions
-  require_once("../functions.php");
+  /* Functions */
+
+  // Function to probe a specific DNSBL
+  function probe_dnsbl($host, $dnsbl) {
+    // Check if first ($host) argument is set properly
+    if (!isset($host)) {
+      return 401;
+    }
+    // Check if second ($dnsbl) argument is set properly
+    if (!isset($dnsbl)) {
+      return 402;
+    }
+    if($host && $dnsbl){
+      // Check for valid IP
+      if(!filter_var($host, FILTER_VALIDATE_IP)) {
+        // Check if valid hostname
+        if (!gethostbyname($host)) {
+          return 403;
+        }
+      }
+
+      $rip=implode('.',array_reverse(explode(".",$host)));
+      if(checkdnsrr($rip.'.'.$dnsbl.'.','A')){
+        // Listed!
+        return 300;
+      }
+    }
+    // Not listed
+    return 200;
+  }
 
   // Disable notice errors that might break JSON
   error_reporting(E_ALL ^ E_NOTICE);
@@ -9,14 +37,14 @@
   $status_codes = array(
     '300' => 'listed',
     '200' => 'not listed',
-    '401' => 'missing "ip" GET parameter',
+    '401' => 'missing "host" GET parameter',
     '402' => 'missing "dnsbl" GET parameter',
-    '403' => 'invalid IP format',
+    '403' => 'invalid host',
   );
 
   // Check for GET variables
-  if (!isset($_GET['ip'])) {
-    $error_message = '"ip" GET request is missing';
+  if (!isset($_GET['host'])) {
+    $error_message = '"host" GET request is missing';
   }
   if (!isset($_GET['dnsbl'])) {
     $error_message = '"dnsbl" GET request is missing';
@@ -25,7 +53,7 @@
   // Create empty array
   $json = array();
 
-  $dnsbl_result=probe_dnsbl($_GET['ip'], $_GET['dnsbl']);
+  $dnsbl_result=probe_dnsbl($_GET['host'], $_GET['dnsbl']);
 
   // Check DNSBL result
   if (isset($dnsbl_result)) {
@@ -35,7 +63,7 @@
     // if no error, store returned data
     } elseif ($dnsbl_result == 200 || $dnsbl_result == 300) {
       $result_json = array();
-      $result_json['ip'] = $_GET['ip'];
+      $result_json['host'] = $_GET['host'];
       $result_json['dnsbl'] = $_GET['dnsbl'];
       $result_json['result'] = $dnsbl_result;
       $json['payload'] = $result_json;

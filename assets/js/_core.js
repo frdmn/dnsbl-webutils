@@ -10,25 +10,26 @@ $(document).ready(function() {
   $('.results table').tablesorter();
 
   // Function to start the blacklist probes
-  var startBlacklistProbes = function (ipToCheck, obj) {
+  var startBlacklistProbes = function (hostToCheck, obj) {
     $('.results tbody').html('');
     $('.results').show(); // Show results table
 
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
-      var promise = $.get('api/?dnsbl=' + value + '&ip=' + ipToCheck, function(data, status) {
+      var promise = $.get('api/?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
         if (status === 'success') {
           var jsonProbe = $.parseJSON(data);
           if (jsonProbe.success === true) {
             if (jsonProbe.payload.result === 200) {
-              console.log(ipToCheck + ': not listed on "' + jsonProbe.payload.dnsbl + '"');
+              console.log(hostToCheck + ': not listed on "' + jsonProbe.payload.dnsbl + '"');
               $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
             } else if (jsonProbe.payload.result === 300) {
-              console.log(ipToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
+              console.log(hostToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
               $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Not OK!</td></tr>');
             }
           } else {
             console.log('Error: ' + jsonProbe.error);
+            $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
           }
         }
       });
@@ -39,7 +40,7 @@ $(document).ready(function() {
     $.when.apply($, requests).done(function() {
       $('.btn-cancel-check').hide(); // Hide cancel button
       $('.spinner').fadeOut(); // Fade out spinner
-      $('input#inputMailserverIP').prop('disabled', false); // Temporary enable input text area
+      $('input#inputMailserverHost').prop('disabled', false); // Temporary enable input text area
       $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
@@ -62,12 +63,9 @@ $(document).ready(function() {
         , validating: 'glyphicon glyphicon-refresh'
       }
       , fields: {
-        inputMailserverIP: {
+        inputMailserverHost: {
           validators: {
-            ip: {
-              message: 'Please enter a valid IP address'
-            }
-            , notEmpty: {
+            notEmpty: {
               message: 'The full name is required'
             }
           }
@@ -81,13 +79,13 @@ $(document).ready(function() {
       // var $form = $(e.target) // The form instance
       // , fv    = $(e.target).data('formValidation'); // FormValidation instance
 
-      $('.alert').hide(); // Hide alert
+      $('.alert-hint').hide(); // Hide hint
       $('.btn-cancel-check').show(); // Show cancel button
       $('.spinner').fadeIn(); // Fade in spinner
-      $('input#inputMailserverIP').prop('disabled', true); // Temporary disable input text area
+      $('input#inputMailserverHost').prop('disabled', true); // Temporary disable input text area
       $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
       $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
-      startBlacklistProbes($('input#inputMailserverIP').val(), jsonObj);
+      startBlacklistProbes($('input#inputMailserverHost').val(), jsonObj);
     });
   });
 });
