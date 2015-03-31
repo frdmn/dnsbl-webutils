@@ -12,14 +12,14 @@
       return 402;
     }
     if($host && $dnsbl){
-      // Check for valid IP
-      if(!filter_var($host, FILTER_VALIDATE_IP)) {
+      // Check for valid IP or host
+      if(!filter_var($host, FILTER_VALIDATE_IP) && !filter_var(gethostbyname($host), FILTER_VALIDATE_IP)) {
         return 403;
       }
 
-      // Check if valid hostname
-      if (!gethostbyname($host)) {
-        return 403;
+      // Translate possible hostanme into IP
+      if (gethostbyname($host)) {
+        $host=gethostbyname($host);
       }
 
       $rip=implode('.',array_reverse(explode(".",$host)));
