@@ -1,7 +1,4 @@
 $(document).ready(function() {
-  // Hide progress bar on page load
-  $('.progress').hide();
-
   // Hide abort button on page load
   $('.btn-abort-check').hide();
 
@@ -9,9 +6,9 @@ $(document).ready(function() {
   $('.btn-submit-check').on('click', function (e) {
     e.preventDefault();
     $('.alert').hide(); // Hide alert
-    $('.progress').fadeIn(); // Fade in progress bar
-    $('.btn-abort-check').fadeIn(); // Fade in progress bar
-    $('.btn-submit-check').prop('disabled', true); // Disable submit button
+    $('.btn-abort-check').fadeIn(); // Fade in abort button
+    $('input#inputMailserver').prop('disabled', true); // Temporary disable input text area
+    $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
     $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
   })
 });

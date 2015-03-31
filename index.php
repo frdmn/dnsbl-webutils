@@ -51,12 +51,6 @@
         <h1><?= $settings['title'] ?></h1>
       </div><!--/.jumbotron -->
 
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-          <span class="sr-only">0% Complete</span>
-        </div>
-      </div><!--/.progress -->
-
       <div class="alert alert-warning alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         Enter the hostname or the IP address of your mail server below and hit <strong>Check</strong>.
