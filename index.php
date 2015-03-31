@@ -3,7 +3,12 @@
   // require_once("functions.php");
 
   // Include configuration file
-  require_once("config.php");
+  if (file_exists('config.php')) {
+    require_once("config.php");
+  } else {
+    die('Error: couldn\'t find "config.php". Perhaps you didn\'t rename the example configuration yet?');
+  }
+
 ?>
 
 <!DOCTYPE html>
