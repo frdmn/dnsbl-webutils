@@ -33,7 +33,7 @@ $(document).ready(function() {
                 $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
               } else if (jsonProbe.payload.result === 300) {
                 console.log(ipToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
-                $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>Not OK!</td></tr>');
+                $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Not OK!</td></tr>');
               }
             } else {
               console.log('Error: ' + jsonProbe.error);
