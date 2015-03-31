@@ -73,6 +73,24 @@
 
       <div class="clearfix"></div>
 
+      <div class="results">
+        <hr/>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Blacklist</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div><!-- /.results -->
+
+      <div class="clearfix"></div>
+
       <footer>
         <hr>
         <p>Powered by <a href="https://github.com/frdmn/dnsbl-monitor" target="_blank">dnsbl-monitor</a> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
