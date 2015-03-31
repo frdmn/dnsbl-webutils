@@ -5,6 +5,9 @@ $(document).ready(function() {
   // Hide results on page load
   $('.results').hide();
 
+  // Initialize table sorter
+  $('.results table').tablesorter();
+
   // Function to start the blacklist probes
   var startBlacklistProbes = function (ipToCheck, obj) {
     $('.results tbody').html('');
@@ -31,13 +34,15 @@ $(document).ready(function() {
       requests.push(promise);
     });
 
-        $('.results table').tablesorter( { sortList: [ [ 2,0 ] ] } );
     // Enable stuff again, when all API calls are finished
     $.when.apply($, requests).done(function() {
       $('.btn-abort-check').hide(); // Hide abort button
       $('input#inputMailserverIP').prop('disabled', false); // Temporary enable input text area
       $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
+      $('.results table').trigger('update')
+        .trigger('appendCache')
+        .trigger('sorton',[ [ [ 2,0 ] ] ]); // Sort table
     });
   }
 
