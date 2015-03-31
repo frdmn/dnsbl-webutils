@@ -12,7 +12,7 @@ $(document).ready(function() {
     var percent = 100 / max * current;
     // Adjust width
     $('.progress-bar').css('width', Math.round(percent) + '%');
-    $('.progress-bar span').html(current + ' / ' + max);
+    $('.progress-bar span').html('RBL check ' + current + ' / ' + max);
   }
 
   function countTableRows(){
