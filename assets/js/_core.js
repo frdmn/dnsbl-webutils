@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  // Hide abort button on page load
-  $('.btn-abort-check').hide();
+  // Hide cancel button and spinner on page load
+  $('.btn-cancel-check').hide();
+  $('.spinner').hide();
 
   // Hide results on page load
   $('.results').hide();
@@ -36,7 +37,8 @@ $(document).ready(function() {
 
     // Enable stuff again, when all API calls are finished
     $.when.apply($, requests).done(function() {
-      $('.btn-abort-check').hide(); // Hide abort button
+      $('.btn-cancel-check').hide(); // Hide cancel button
+      $('.spinner').fadeOut(); // Fade out spinner
       $('input#inputMailserverIP').prop('disabled', false); // Temporary enable input text area
       $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
@@ -80,7 +82,8 @@ $(document).ready(function() {
       // , fv    = $(e.target).data('formValidation'); // FormValidation instance
 
       $('.alert').hide(); // Hide alert
-      $('.btn-abort-check').show(); // Fade in abort button
+      $('.btn-cancel-check').show(); // Show cancel button
+      $('.spinner').fadeIn(); // Fade in spinner
       $('input#inputMailserverIP').prop('disabled', true); // Temporary disable input text area
       $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
       $('.btn-submit-check').text('Checking...'); // Adjust text of submit button

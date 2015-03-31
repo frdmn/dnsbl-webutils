@@ -68,7 +68,8 @@
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default btn-submit-check">Check</button>
-            <a href="" class="btn btn-danger btn-abort-check">Abort</a>
+            <a href="" class="btn btn-danger btn-cancel-check">Cancel</a>
+            <img src="assets/img/spinner.gif" class="spinner pull-right">
           </div>
         </div><!-- /.form-group -->
       </form><!-- /.form-horizontal -->
