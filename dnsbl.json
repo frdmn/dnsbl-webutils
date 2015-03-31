@@ -1,12 +1,324 @@
 {
   "blacklists": [
     {
-      "name": "Spamhaus SBL",
+      "name": "Barracuda Reputation Block List (BRBL)",
+      "hostname": "b.barracudacentral.org"
+    },
+    {
+      "name": "Dead Beef Blacklist",
+      "hostname": "bl.deadbeef.com"
+    },
+    {
+      "name": "Email Basura",
+      "hostname": "bl.emailbasura.org"
+    },
+    {
+      "name": "SpamCannibal",
+      "hostname": "bl.spamcannibal.org"
+    },
+    {
+      "name": "SpamCop",
+      "hostname": "bl.spamcop.net"
+    },
+    {
+      "name": "blackholes.five-ten-sg.com ",
+      "hostname": "blackholes.five-ten-sg.com"
+    },
+    {
+      "name": "Woody",
+      "hostname": "blacklist.woody.ch"
+    },
+    {
+      "name": "bogons.cymru.com",
+      "hostname": "bogons.cymru.com"
+    },
+    {
+      "name": "Composite Blocking List (CBL)",
+      "hostname": "cbl.abuseat.org"
+    },
+    {
+      "name": "cdl.anti-spam.org.cn",
+      "hostname": "cdl.anti-spam.org.cn"
+    },
+    {
+      "name": "combined.abuse.ch",
+      "hostname": "combined.abuse.ch"
+    },
+    {
+      "name": "combined.rbl.msrbl.net",
+      "hostname": "combined.rbl.msrbl.net"
+    },
+    {
+      "name": "Weighted Private Block List",
+      "hostname": "db.wpbl.info"
+    },
+    {
+      "name": "UCEPROTECT Blacklist Level 1",
+      "hostname": "dnsbl-1.uceprotect.net"
+    },
+    {
+      "name": "UCEPROTECT Blacklist Level 2",
+      "hostname": "dnsbl-2.uceprotect.net"
+    },
+    {
+      "name": "UCEPROTECT Blacklist Level 3",
+      "hostname": "dnsbl-3.uceprotect.net"
+    },
+    {
+      "name": "The Abusive Hosts Blocking List",
+      "hostname": "dnsbl.ahbl.org"
+    },
+    {
+      "name": "dnsbl.cyberlogic.net",
+      "hostname": "dnsbl.cyberlogic.net"
+    },
+    {
+      "name": "dnsbl.inps.de",
+      "hostname": "dnsbl.inps.de"
+    },
+    {
+      "name": "Not Just Another Bogus List",
+      "hostname": "dnsbl.njabl.org"
+    },
+    {
+      "name": "SORBS - Aggregated zone",
+      "hostname": "dnsbl.sorbs.net"
+    },
+    {
+      "name": "abuse.ch FastFlux Tracker",
+      "hostname": "drone.abuse.ch"
+    },
+    {
+      "name": "duinv.aupads.org",
+      "hostname": "duinv.aupads.org"
+    },
+    {
+      "name": "SORBS - Dynamic User and Host List",
+      "hostname": "dul.dnsbl.sorbs.net"
+    },
+    {
+      "name": "dul.ru",
+      "hostname": "dul.ru"
+    },
+    {
+      "name": "dyna.spamrats.com",
+      "hostname": "dyna.spamrats.com"
+    },
+    {
+      "name": "dynip.rothen.com",
+      "hostname": "dynip.rothen.com"
+    },
+    {
+      "name": "SORBS - Open HTTP Proxy Servers",
+      "hostname": "http.dnsbl.sorbs.net"
+    },
+    {
+      "name": "images.rbl.msrbl.net",
+      "hostname": "images.rbl.msrbl.net"
+    },
+    {
+      "name": "Backscatterer",
+      "hostname": "ips.backscatterer.org"
+    },
+    {
+      "name": "ix.dnsbl.manitu.net",
+      "hostname": "ix.dnsbl.manitu.net"
+    },
+    {
+      "name": "korea.services.net",
+      "hostname": "korea.services.net"
+    },
+    {
+      "name": "SORBS - Misc Open Proxy Servers",
+      "hostname": "misc.dnsbl.sorbs.net"
+    },
+    {
+      "name": "noptr.spamrats.com",
+      "hostname": "noptr.spamrats.com"
+    },
+    {
+      "name": "ohps.dnsbl.net.au",
+      "hostname": "ohps.dnsbl.net.au"
+    },
+    {
+      "name": "omrs.dnsbl.net.au",
+      "hostname": "omrs.dnsbl.net.au"
+    },
+    {
+      "name": "orvedb.aupads.org",
+      "hostname": "orvedb.aupads.org"
+    },
+    {
+      "name": "osps.dnsbl.net.au",
+      "hostname": "osps.dnsbl.net.au"
+    },
+    {
+      "name": "osrs.dnsbl.net.au",
+      "hostname": "osrs.dnsbl.net.au"
+    },
+    {
+      "name": "owfs.dnsbl.net.au",
+      "hostname": "owfs.dnsbl.net.au"
+    },
+    {
+      "name": "owps.dnsbl.net.au",
+      "hostname": "owps.dnsbl.net.au"
+    },
+    {
+      "name": "The Policy Block List",
+      "hostname": "pbl.spamhaus.org"
+    },
+    {
+      "name": "phishing.rbl.msrbl.net",
+      "hostname": "phishing.rbl.msrbl.net"
+    },
+    {
+      "name": "probes.dnsbl.net.au",
+      "hostname": "probes.dnsbl.net.au"
+    },
+    {
+      "name": "proxy.bl.gweep.ca",
+      "hostname": "proxy.bl.gweep.ca"
+    },
+    {
+      "name": "proxy.block.transip.nl",
+      "hostname": "proxy.block.transip.nl"
+    },
+    {
+      "name": "Passive Spam Block List",
+      "hostname": "psbl.surriel.com"
+    },
+    {
+      "name": "rbl.interserver.net",
+      "hostname": "rbl.interserver.net"
+    },
+    {
+      "name": "MegaRBL",
+      "hostname": "rbl.megarbl.net"
+    },
+    {
+      "name": "rdts.dnsbl.net.au",
+      "hostname": "rdts.dnsbl.net.au"
+    },
+    {
+      "name": "relays.bl.gweep.ca",
+      "hostname": "relays.bl.gweep.ca"
+    },
+    {
+      "name": "relays.bl.kundenserver.de",
+      "hostname": "relays.bl.kundenserver.de"
+    },
+    {
+      "name": "relays.nether.net",
+      "hostname": "relays.nether.net"
+    },
+    {
+      "name": "residential.block.transip.nl",
+      "hostname": "residential.block.transip.nl"
+    },
+    {
+      "name": "ricn.dnsbl.net.au",
+      "hostname": "ricn.dnsbl.net.au"
+    },
+    {
+      "name": "Multiple Spam Traps Block List",
+      "hostname": "rmst.dnsbl.net.au"
+    },
+    {
+      "name": "The Spamhaus Block List",
       "hostname": "sbl.spamhaus.org"
     },
     {
-      "name": "Spamhaus XBL",
+      "name": "short.rbl.jp",
+      "hostname": "short.rbl.jp"
+    },
+    {
+      "name": "SORBS - Open SMTP Relay Servers",
+      "hostname": "smtp.dnsbl.sorbs.net"
+    },
+    {
+      "name": "SORBS - Open SOCKS Proxy Servers",
+      "hostname": "socks.dnsbl.sorbs.net"
+    },
+    {
+      "name": "abuse.ch Web abuse Tracker",
+      "hostname": "spam.abuse.ch"
+    },
+    {
+      "name": "SORBS - Spam Sources",
+      "hostname": "spam.dnsbl.sorbs.net"
+    },
+    {
+      "name": "spam.rbl.msrbl.net",
+      "hostname": "spam.rbl.msrbl.net"
+    },
+    {
+      "name": "spam.spamrats.com",
+      "hostname": "spam.spamrats.com"
+    },
+    {
+      "name": "spamlist.or.kr",
+      "hostname": "spamlist.or.kr"
+    },
+    {
+      "name": "spamrbl.imp.ch",
+      "hostname": "spamrbl.imp.ch"
+    },
+    {
+      "name": "t3direct.dnsbl.net.au",
+      "hostname": "t3direct.dnsbl.net.au"
+    },
+    {
+      "name": "tor.ahbl.org",
+      "hostname": "tor.ahbl.org"
+    },
+    {
+      "name": "tor.dnsbl.sectoor.de",
+      "hostname": "tor.dnsbl.sectoor.de"
+    },
+    {
+      "name": "torserver.tor.dnsbl.sectoor.de",
+      "hostname": "torserver.tor.dnsbl.sectoor.de"
+    },
+    {
+      "name": "ubl.lashback.com",
+      "hostname": "ubl.lashback.com"
+    },
+    {
+      "name": "ubl.unsubscore.com",
+      "hostname": "ubl.unsubscore.com"
+    },
+    {
+      "name": "virbl.bit.nl",
+      "hostname": "virbl.bit.nl"
+    },
+    {
+      "name": "virus.rbl.jp",
+      "hostname": "virus.rbl.jp"
+    },
+    {
+      "name": "virus.rbl.msrbl.net",
+      "hostname": "virus.rbl.msrbl.net"
+    },
+    {
+      "name": "SORBS - Web Servers with Spammer Vulnerabilities",
+      "hostname": "web.dnsbl.sorbs.net"
+    },
+    {
+      "name": "wormrbl.imp.ch",
+      "hostname": "wormrbl.imp.ch"
+    },
+    {
+      "name": "Spamhaus Exploits Block List",
       "hostname": "xbl.spamhaus.org"
+    },
+    {
+      "name": "Spamhaus ZEN Blacklist",
+      "hostname": "zen.spamhaus.org"
+    },
+    {
+      "name": "SORBS - Zombie Networks",
+      "hostname": "zombie.dnsbl.sorbs.net"
     }
   ]
 }
