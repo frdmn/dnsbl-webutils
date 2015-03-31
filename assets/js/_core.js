@@ -63,8 +63,8 @@ $(document).ready(function() {
   var startBlacklistProbes = function (hostToCheck, obj) {
     $('.results tbody').html('');
     resetProgress();
-    $('.progress').show(); // Show progress bar
-    $('.results').show(); // Show results table
+    $('.progress').show();
+    $('.results').show();
 
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
@@ -142,9 +142,12 @@ $(document).ready(function() {
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance
       // , fv    = $(e.target).data('formValidation'); // FormValidation instance
+
+      // Disable inputs during the check
       disableInputs();
-      $('.alert-hint').hide(); // Hide hint
-      $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
+      // As well as prepare some other elements
+      $('.alert-hint').hide();
+      $('.btn-submit-check').text('Checking...');
       startBlacklistProbes($('input#inputMailserverHost').val(), jsonObj);
     });
   });
