@@ -1,4 +1,21 @@
 $(document).ready(function() {
+  /* Functions */
+
+  function resetProgress(){
+    $('.progress-bar').css({ 'width': '0%', 'transition': 'none' });
+    $('.progress-bar span').html('');
+  }
+
+  function updateProgress(current, max){
+    var percent = 100 / max * current;
+    $('.progress-bar').css('width', Math.round(percent) + '%');
+    $('.progress-bar span').html(current + ' / ' + max);
+  }
+
+  function countTableRows(){
+    return $('.results tbody tr').length;
+  }
+
   // Hide cancel button and spinner on page load
   $('.btn-cancel-check').hide();
   $('.spinner').hide();
@@ -12,6 +29,7 @@ $(document).ready(function() {
   // Function to start the blacklist probes
   var startBlacklistProbes = function (hostToCheck, obj) {
     $('.results tbody').html('');
+    resetProgress();
     $('.results').show(); // Show results table
 
     var requests = [];
@@ -31,6 +49,7 @@ $(document).ready(function() {
             console.log('Error: ' + jsonProbe.error);
             $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
           }
+          updateProgress(countTableRows(), obj.blacklists.length);
         }
       });
       requests.push(promise);

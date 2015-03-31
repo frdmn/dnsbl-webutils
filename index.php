@@ -61,6 +61,12 @@
         Enter the IP address or hostname of your mail server below and hit <strong>Check</strong>.
       </div><!--/.alert -->
 
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%;">
+          <span></span>
+        </div>
+      </div>
+
       <form class="form-horizontal form-input">
         <div class="form-group">
           <label for="inputMailserverHost" class="col-sm-2 control-label">Mail server</label>
