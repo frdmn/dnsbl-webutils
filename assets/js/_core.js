@@ -24,7 +24,7 @@ $(document).ready(function() {
 
       var requests = [];
       $.each(jsonBlacklists.blacklists, function(key, value) {
-        var promise = $.get('probe.php?dnsbl=' + value.hostname + '&ip=' + ipToCheck, function(data, status) {
+        var promise = $.get('probe.php?dnsbl=' + value + '&ip=' + ipToCheck, function(data, status) {
           if (status === 'success') {
             var jsonProbe = $.parseJSON(data);
             if (jsonProbe.success === true) {
