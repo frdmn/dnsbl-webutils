@@ -11,8 +11,8 @@ Web based DNSBL blacklist monitor for your mail servers.
 ## Installation
 
 1. Clone this repository to your document root
-1. Make sure the web server is allowed to create/adjust files
 1. Point your browser to that document root
+1. Copy and rename the default config to `config.php`
 
 ## Development
 

@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('input#inputMailserver').prop('disabled', true); // Temporary disable input text area
     $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
     $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
-    startBlacklistProbes($('input#inputMailserver').val());
+    startBlacklistProbes($('input#inputMailserverIP').val());
   });
 
   // Function to start the blacklist probes
@@ -52,4 +52,25 @@ $(document).ready(function() {
       });
     });
   }
+
+  $('form.input').formValidation({
+    framework: 'bootstrap'
+    , icon: {
+      valid: 'glyphicon glyphicon-ok'
+      , invalid: 'glyphicon glyphicon-remove'
+      , validating: 'glyphicon glyphicon-refresh'
+    }
+    , fields: {
+      inputMailserverIP: {
+        validators: {
+          ip: {
+            message: 'Please enter a valid IP address'
+          }
+          , notEmpty: {
+            message: 'The full name is required'
+          }
+        }
+      }
+    }
+  });
 });
