@@ -90,9 +90,9 @@
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Blacklist</th>
-              <th>Status <span class="label label-danger label-listings"></span></th>
+              <th class="col-md-1">#</th>
+              <th class="col-md-7">Blacklist</th>
+              <th class="col-md-4">Status <span class="label label-danger label-listings"></span></th>
             </tr>
           </thead>
           <tbody></tbody>
