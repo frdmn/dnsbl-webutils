@@ -1,14 +1,14 @@
 <?php
 
 /**
-* This is the general configuaration file for dnsbl-monitor.
+* This is the general configuaration file for dnsbl-utils.
 **/
 
 date_default_timezone_set("Europe/Berlin"); // Set default timezone for date()
 
 // General
 
-$settings['title'] = "DNSBL Monitor";
+$settings['title'] = "DNSBL";
 
 // Design
 

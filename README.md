@@ -1,7 +1,9 @@
-dnsbl-monitor
-=============
+dnsbl-utils
+===========
 
-Web based DNSBL blacklist monitor for your mail servers.
+CLI and web based DNSBL utilities. At the moment this consists out of several parts:
+
+* __dnsbl-check__: Web based real time check against quite a few DNSBLs
 
 ## Requirements
 
