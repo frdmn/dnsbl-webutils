@@ -124,8 +124,8 @@ $(document).ready(function() {
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance
       // , fv    = $(e.target).data('formValidation'); // FormValidation instance
-
       disableInputs();
+      $('.alert-hint').hide(); // Hide hint
       $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
       startBlacklistProbes($('input#inputMailserverHost').val(), jsonObj);
     });
