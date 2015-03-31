@@ -9,7 +9,7 @@ $(document).ready(function() {
   $('.btn-submit-check').on('click', function (e) {
     e.preventDefault();
     $('.alert').hide(); // Hide alert
-    $('.btn-abort-check').fadeIn(); // Fade in abort button
+    $('.btn-abort-check').show(); // Fade in abort button
     $('input#inputMailserver').prop('disabled', true); // Temporary disable input text area
     $('.btn-submit-check').prop('disabled', true); // Temporary disable submit button
     $('.btn-submit-check').text('Checking...'); // Adjust text of submit button
@@ -22,8 +22,9 @@ $(document).ready(function() {
       $('.results tbody').html('');
       $('.results').show(); // Show results table
 
+      var requests = [];
       $.each(jsonBlacklists.blacklists, function(key, value) {
-        $.get('probe.php?dnsbl=' + value.hostname + '&ip=' + ipToCheck, function(data, status) {
+        var promise = $.get('probe.php?dnsbl=' + value.hostname + '&ip=' + ipToCheck, function(data, status) {
           if (status === 'success') {
             var jsonProbe = $.parseJSON(data);
             if (jsonProbe.success === true) {
@@ -39,11 +40,15 @@ $(document).ready(function() {
             }
           }
         });
+        requests.push(promise);
       });
-      $('.btn-abort-check').hide(); // Hide abort button
-      $('input#inputMailserver').prop('disabled', false); // Temporary enable input text area
-      $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
-      $('.btn-submit-check').text('Check another'); // Adjust text of submit button
+
+      $.when.apply($, requests).done(function() {
+        $('.btn-abort-check').hide(); // Hide abort button
+        $('input#inputMailserver').prop('disabled', false); // Temporary enable input text area
+        $('.btn-submit-check').prop('disabled', false); // Temporary enable submit button
+        $('.btn-submit-check').text('Check another'); // Adjust text of submit button
+      });
     });
   }
 });
