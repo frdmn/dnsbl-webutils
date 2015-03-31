@@ -49,6 +49,8 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1><?= $settings['title'] ?></h1>
+        <p>A DNS-based Blackhole List (<i>DNSBL</i>) or Real-time Blackhole List (<i>RBL</i>) is an effort to stop email spamming. Most mail server software can be configured to reject or flag messages which have been sent from a site listed on one or more such lists.</p>
+        <p>Below you can <a class="a-tooltip" href="#" data-toggle="tooltip" data-original-title="Default tooltip">mass test</a> such <i>DNSBL</i>'s against the IPs of your mail servers to monitor possible listings.</p>
       </div><!--/.jumbotron -->
 
       <div class="alert alert-warning alert-dismissible" role="alert">
@@ -83,9 +85,7 @@
               <th>Status</th>
             </tr>
           </thead>
-          <tbody>
-
-          </tbody>
+          <tbody></tbody>
         </table>
       </div><!-- /.results -->
 

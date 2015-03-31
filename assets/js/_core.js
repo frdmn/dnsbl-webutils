@@ -53,6 +53,7 @@ $(document).ready(function() {
     });
   }
 
+  // Validate input form
   $('form.input').formValidation({
     framework: 'bootstrap'
     , icon: {
@@ -72,5 +73,10 @@ $(document).ready(function() {
         }
       }
     }
+  });
+
+  // Show RBL count in jumbotron
+  $.getJSON('dnsbl.json', function(json) {
+    $('.a-tooltip').attr('data-original-title', 'Currently testing agaist ' + json.blacklists.length + ' RBLs.').tooltip();
   });
 });
