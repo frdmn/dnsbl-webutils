@@ -1,0 +1,22 @@
+{
+  "name": "blacklist-monitor",
+  "version": "1.0.0",
+  "description": "Web based DNSBL blacklist monitor for your mail servers",
+  "authors": [
+    "Jonas Friedmann"
+  ],
+  "license": "WTFPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.3",
+    "modernizr": "~2.8.3",
+    "bootstrap-sass-official": "~3.3.3"
+  }
+}
