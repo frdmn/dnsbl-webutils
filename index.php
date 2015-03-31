@@ -92,7 +92,7 @@
             <tr>
               <th></th>
               <th>Blacklist</th>
-              <th>Status</th>
+              <th>Status <span class="label label-danger label-listings"></span></th>
             </tr>
           </thead>
           <tbody></tbody>

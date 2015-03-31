@@ -20,6 +20,18 @@ $(document).ready(function() {
     return $('.results tbody tr').length;
   }
 
+  function updateListingBadge(){
+    /* jshint ignore:start */
+    var listings = $(".results tbody tr:contains('Listed')").length;
+    if (listings > 0) {
+      $('.label-listings').show();
+      $('.label-listings').html(listings + ' listings');
+    } else {
+      $('.label-listings').hide();
+    }
+    /* jshint ignore:end */
+  }
+
   // Enable general inputs
   function enableInputs(){
     $('.spinner').hide();
@@ -61,13 +73,14 @@ $(document).ready(function() {
               $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
             } else if (jsonProbe.payload.result === 300) {
               console.log(hostToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
-              $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Not OK!</td></tr>');
+              $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
             }
           } else {
             console.log('Error: ' + jsonProbe.error);
             $('.results table > tbody').append('<tr><th scope="row">' + key + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
           }
           updateProgress(countTableRows(), obj.blacklists.length);
+          updateListingBadge();
         }
       });
 
