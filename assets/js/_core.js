@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
-      var promise = $.get('api.php?dnsbl=' + value + '&ip=' + ipToCheck, function(data, status) {
+      var promise = $.get('api/?dnsbl=' + value + '&ip=' + ipToCheck, function(data, status) {
         if (status === 'success') {
           var jsonProbe = $.parseJSON(data);
           if (jsonProbe.success === true) {

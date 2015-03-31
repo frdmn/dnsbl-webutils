@@ -1,6 +1,6 @@
 <?php
   // Include functions
-  require_once("functions.php");
+  require_once("../functions.php");
 
   // Disable notice errors that might break JSON
   error_reporting(E_ALL ^ E_NOTICE);
