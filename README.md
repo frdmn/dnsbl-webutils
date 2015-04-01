@@ -3,9 +3,11 @@ dnsbl-webutils
 
 ![](http://up.frd.mn/4TzB9.png)
 
-Web based DNSBL (or RBL) utilities:
+Web based and self hosted DNSBL (or RBL) utilities:
 
 * __dnsbl-check__: Web based real time check against quite a few DNSBLs
+
+This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blacklists.aspx)'s monitor.
 
 ### Requirements
 
