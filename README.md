@@ -1,39 +1,45 @@
-dnsbl-utils
-===========
+dnsbl-webutils
+==============
 
-CLI and web based DNSBL utilities. At the moment this consists out of several parts:
+![](http://up.frd.mn/4TzB9.png)
+
+Web based DNSBL (or RBL) utilities:
 
 * __dnsbl-check__: Web based real time check against quite a few DNSBLs
 
-## Requirements
+### Requirements
 
 * Web server (Nginx/Apache)
 * PHP (tested with 5.5)
+* Bower, Grunt, JSHint, JSCS (in case you build from master)
 
-## Installation
+### Installation
 
-1. Clone this repository to your document root
-1. Point your browser to that document root
-1. Copy and rename the default config to `config.php`
+##### Stable official release
 
-## Development
+1. Click on [GitHub releases](https://github.com/frdmn/dnsbl-webutils/releases).
+1. Download the latest version.
+1. Extract in your document root.
+1. Copy and rename the default config to `config.php`:
+  `cp config.example.php config.php`
 
-In case you want to help and contribute to the project you need to compile the assets with the assistence of Grunt:
+##### Development git master branch
 
 1. Make sure you've installed `node` and `npm`
-1. Install Grunt, Bower and Linter and code checker:  
+1. Clone this repository:  
+  `https://github.com/frdmn/dnsbl-webutils.git`
+1. Open cloned repository:  
+  `cd dnsbl-webutils`
+1. Install requirements and dependencies:  
   `npm install -g grunt-cli bower jshint jscs`
-1. Install all dependencies:  
   `npm install`
-1. Install web libraries:  
+1. Download web libraries:  
   `bower install`
-1. Run grunt task to compile assets and start watching for local file changes:  
-  `grunt dev`
-
-If you want to commit your changes, exclude the `dev` argument.
+1. Compile assets:  
+  `grunt dev` or `grunt`
 
 Caution: When using the `dev` argument, Grunt won't minify your JS or CSS, so it's easier to debug. Once you run `grunt` (without the `dev`), the files are minified!
 
-## Version
+### Version
 
 1.0.0
