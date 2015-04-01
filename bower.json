@@ -1,5 +1,5 @@
 {
-  "name": "dnsbl-utils",
+  "name": "dnsbl-webutils",
   "version": "1.0.0",
   "description": "CLI and web based DNSBL utiltities",
   "authors": [

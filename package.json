@@ -1,10 +1,10 @@
 {
-  "name": "dnsbl-utils",
+  "name": "dnsbl-webutils",
   "version": "1.0.0",
   "description": "CLI and web based DNSBL utiltities",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frdmn/dnsbl-utils.git"
+    "url": "https://github.com/frdmn/dnsbl-webutils.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

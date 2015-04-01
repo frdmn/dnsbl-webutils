@@ -85,7 +85,7 @@
 
       <footer>
         <hr>
-        <p>Powered by <a href="https://github.com/frdmn/dnsbl-utils" target="_blank">dnsbl-utils</a> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
+        <p>Powered by <a href="https://github.com/frdmn/dnsbl-webutils" target="_blank">dnsbl-webutils</a> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
       </footer>
     </div><!-- /.container -->
 

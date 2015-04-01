@@ -1,7 +1,7 @@
 <?php
 
 /**
-* This is the general configuaration file for dnsbl-utils.
+* This is the general configuaration file for dnsbl-webutils.
 **/
 
 date_default_timezone_set("Europe/Berlin"); // Set default timezone for date()
