@@ -1,5 +1,4 @@
 <?php
-
   // Include configuration file
   if (file_exists('config.php')) {
     require_once("config.php");
@@ -7,6 +6,18 @@
     die('Error: couldn\'t find "config.php". Perhaps you didn\'t rename the example configuration yet?');
   }
 
+  // Create URI constant
+  $uri = "http".(!empty($_SERVER['HTTPS'])?"s":"")."://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+
+  // Check for any passed actions
+  if (!isset($_GET['action']) || empty($_GET['action'])) {
+    // Redirect to default "check" if none set
+    header('Location: '.$uri.'?action=check');
+    exit;
+  } else {
+    // Store action for later use
+    $action = $_GET['action'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +31,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title><?= $settings['title'] ?></title>
+    <title><?= $settings['title'] ?> - <?= ucfirst($_GET['action']) ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -41,63 +52,34 @@
         </div><!--/.navbar-header -->
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="">Check</a></li>
+            <?php
+              $navbarPages = array( 'check' );
+              foreach ($navbarPages as $navbarPage) {
+                if ($action == $navbarPage) {
+                  $possibleActiveClass = 'active';
+                } else {
+                  $possibleActiveClass = '';
+                }
+                echo '<li class="'.$possibleActiveClass.'"><a href="'.$uri.'?action='.$navbarPage.'">'.ucfirst($navbarPage).'</a></li>';
+              }
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container -->
     </nav>
 
-    <div class="container theme-showcase" role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1><?= $settings['title'] ?></h1>
-        <p>A DNS-based Blackhole List (<i>DNSBL</i>) or Real-time Blackhole List (<i>RBL</i>) is an effort to stop email spamming. Most mail server software can be configured to reject or flag messages which have been sent from a site listed on one or more such lists.</p>
-        <p>Below you can <a class="a-tooltip" href="#" data-toggle="tooltip" data-original-title="Default tooltip">mass test</a> such <i>DNSBL</i>'s against the IPs of your mail servers to possible listings.</p>
-      </div><!--/.jumbotron -->
-
-      <div class="alert alert-warning alert-dismissible alert-hint" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        Enter the IP address or hostname of your mail server below and hit <strong>Check</strong>.
-      </div><!--/.alert -->
-
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 0%;">
-          <span></span>
-        </div>
-      </div>
-
-      <form class="form-horizontal form-input">
-        <div class="form-group">
-          <label for="inputMailserverHost" class="col-sm-2 control-label">Mail server</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputMailserverHost" name="inputMailserverHost" placeholder="IP address/hostname">
-          </div>
-        </div><!-- /.form-group -->
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default btn-submit-check">Check</button>
-            <a href="" class="btn btn-danger btn-cancel-check">Cancel</a>
-            <img src="assets/img/spinner.gif" class="spinner pull-right">
-          </div>
-        </div><!-- /.form-group -->
-      </form><!-- /.form-horizontal -->
-
-      <div class="clearfix"></div>
-
-      <div class="results">
-        <hr/>
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="col-md-1">#</th>
-              <th class="col-md-7">Blacklist</th>
-              <th class="col-md-4">Status <span class="label label-danger label-listings"></span></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div><!-- /.results -->
+    <div class="container theme-showcase container--<?= $action ?>" role="main">
+      <?php
+        if (file_exists('views/'.$action.'.php')) {
+          include('views/'.$action.'.php');
+        } else {
+      ?>
+        <div class="alert alert-danger" role="alert">
+          Couldn't find view "<?= $action ?>". Maybe try the <a href="<?=$uri?>">main page</a> instead?
+        </div><!--/.alert -->
+      <?php
+        }
+      ?>
 
       <div class="clearfix"></div>
 
