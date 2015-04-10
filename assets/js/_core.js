@@ -1,5 +1,10 @@
+/* global Ladda */
+
 $(document).ready(function() {
   /* Functions */
+
+  // Declare ladda button
+  var l = Ladda.create(document.querySelector( '.btn-submit-check' ) );
 
   // Reset progress bar
   function resetProgress(){
@@ -34,7 +39,6 @@ $(document).ready(function() {
 
   // Enable general inputs
   function enableInputs(){
-    $('.spinner').hide();
     $('.results').hide();
     $('.btn-cancel-check').hide();
     $('input#inputMailserverHost').prop('disabled', false);
@@ -43,7 +47,6 @@ $(document).ready(function() {
 
   // Disable general inputs
   function disableInputs(){
-    $('.spinner').fadeIn();
     $('.results').show();
     $('.btn-cancel-check').show();
     $('input#inputMailserverHost').prop('disabled', true);
@@ -105,6 +108,7 @@ $(document).ready(function() {
     // Enable stuff again, when all API calls are finished
     $.when.apply($, requests).done(function() {
       enableInputs();
+      l.stop();
       $('.results').show();
       $('.progress').fadeOut();
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
@@ -139,6 +143,9 @@ $(document).ready(function() {
     }).on('success.form.fv', function(e) {
       // Prevent form submission
       e.preventDefault();
+
+      // Start loading button
+      l.start();
 
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance

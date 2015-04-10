@@ -19,6 +19,11 @@
     "modernizr": "~2.8.3",
     "bootstrap-sass-official": "~3.3.3",
     "jquery.tablesorter": "~2.21.4",
-    "form.validation": "*"
+    "form.validation": "*",
+    "ladda": "~0.9.8",
+    "ladda-bootstrap": "~0.1.0"
+  },
+  "resolutions": {
+    "spin.js": "~2.0.2"
   }
 }

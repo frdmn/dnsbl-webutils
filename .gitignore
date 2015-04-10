@@ -42,3 +42,4 @@ assets/fonts/*
 assets/css/style.css
 assets/js/modernizr.js
 assets/js/build.js
+assets/css/ladda-bootstrap.scss
