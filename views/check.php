@@ -25,7 +25,7 @@
         </div><!-- /.form-group -->
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-danger btn-submit-check ladda-button" data-spinner-color="#000000" data-style="expand-left">Check</button>
+            <button type="submit" class="btn btn-default btn-submit-check ladda-button" data-style="expand-left">Check</button>
             <a href="" class="btn btn-danger btn-cancel-check">Cancel</a>
           </div>
         </div><!-- /.form-group -->
