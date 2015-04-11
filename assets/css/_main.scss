@@ -4,3 +4,29 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
+
+/* SpinSubmit */
+
+.submit-spinner {
+  position: relative;
+  overflow: hidden;
+  transition: .3s padding;
+  .spinner {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: .3s transform;
+    transform: translateX(-20px);
+  }
+}
+
+.submit-spinner--spinning{
+  position: relative;
+  padding-left: 15px;
+  .spinner {
+    display: inline-block;
+    margin-left: -15px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

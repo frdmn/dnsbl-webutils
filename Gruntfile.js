@@ -90,8 +90,6 @@ module.exports = function(grunt) {
                     , '<%= dirs.bower %>/jquery.tablesorter/dist/js/jquery.tablesorter.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/formValidation.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/framework/bootstrap.js'
-                    , '<%= dirs.bower %>/spin.js/spin.js'
-                    , '<%= dirs.bower %>/ladda/js/ladda.js'
                     , '<%= dirs.js %>/*.js'
                     , '!<%= dirs.js %>/modernizr.js'
                     , '!<%= dirs.js %>/build.js'
@@ -173,7 +171,6 @@ module.exports = function(grunt) {
           main: {
             files: [
               { expand: true, cwd: '<%= dirs.bower %>/bootstrap-sass-official/assets/fonts/bootstrap/', src: [ '**' ], dest: '<%= dirs.fonts %>' },
-              { expand: true, cwd: '<%= dirs.bower %>/ladda-bootstrap/dist/', src: [ 'ladda-themeless.css' ], dest: '<%= dirs.css %>', rename: function(dest) { return dest + '/ladda-bootstrap.scss'; } }
             ]
           }
         }

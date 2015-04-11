@@ -1,10 +1,5 @@
-/* global Ladda */
-
 $(document).ready(function() {
   /* Functions */
-
-  // Declare ladda button
-  var l = Ladda.create(document.querySelector( '.btn-submit-check' ) );
 
   // Reset progress bar
   function resetProgress(){
@@ -52,6 +47,32 @@ $(document).ready(function() {
     $('input#inputMailserverHost').prop('disabled', true);
     $('.btn-submit-check').prop('disabled', true);
   }
+
+  /* SpinSubmit */
+  var SpinSubmit = function(submit) {
+    this.submit = submit;
+    this.originalText = this.submit.text();
+
+    this.submit.html('<span class="original">' + this.originalText + '</span>');
+
+    this.original = this.submit.children('.original');
+
+    this.submit.prepend('<span class="spinner">⟲</span>');
+  }
+
+  SpinSubmit.prototype.start = function (text) {
+    this.original.text((text ? text : this.originalText));
+    this.submit.addClass('submit-spinner--spinning');
+  }
+
+  SpinSubmit.prototype.stop = function () {
+    this.original.text(this.originalText);
+    this.submit.removeClass('submit-spinner--spinning');
+  }
+
+  /*init*/
+  var spinnerInput = $('#spinner1')
+  , mySpinner = new SpinSubmit(spinnerInput);
 
   // Enable inputs on page load
   enableInputs();
@@ -108,13 +129,13 @@ $(document).ready(function() {
     // Enable stuff again, when all API calls are finished
     $.when.apply($, requests).done(function() {
       enableInputs();
-      l.stop();
       $('.results').show();
       $('.progress').fadeOut();
       $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
         .trigger('appendCache')
         .trigger('sorton',[ [ [ 2,0 ], [ 0,0 ] ] ]); // Sort table
+      mySpinner.stop();
     });
   }
 
@@ -144,8 +165,7 @@ $(document).ready(function() {
       // Prevent form submission
       e.preventDefault();
 
-      // Start loading button
-      l.start();
+      mySpinner.start('Checking');
 
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance
