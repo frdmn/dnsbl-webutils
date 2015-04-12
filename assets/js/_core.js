@@ -1,3 +1,26 @@
+/* SpinSubmit */
+var SpinSubmit = function(submit) {
+  this.submit = submit;
+  this.originalText = this.submit.text();
+
+  this.submit.html('<span class="original">' + this.originalText + '</span>');
+
+  this.original = this.submit.children('.original');
+
+  //this.submit.prepend('<span class="spinner">⟲</span>');
+  this.submit.prepend('<span class="spinner"></span>');
+}
+
+SpinSubmit.prototype.start = function (text) {
+  this.original.text((text ? text : this.originalText));
+  this.submit.addClass('submit-spinner--spinning');
+}
+
+SpinSubmit.prototype.stop = function (text) {
+  this.original.text((text ? text : this.originalText));
+  this.submit.removeClass('submit-spinner--spinning');
+}
+
 $(document).ready(function() {
   /* Functions */
 
@@ -46,28 +69,6 @@ $(document).ready(function() {
     $('.btn-cancel-check').show();
     $('input#inputMailserverHost').prop('disabled', true);
     $('.btn-submit-check').prop('disabled', true);
-  }
-
-  /* SpinSubmit */
-  var SpinSubmit = function(submit) {
-    this.submit = submit;
-    this.originalText = this.submit.text();
-
-    this.submit.html('<span class="original">' + this.originalText + '</span>');
-
-    this.original = this.submit.children('.original');
-
-    this.submit.prepend('<span class="spinner">⟲</span>');
-  }
-
-  SpinSubmit.prototype.start = function (text) {
-    this.original.text((text ? text : this.originalText));
-    this.submit.addClass('submit-spinner--spinning');
-  }
-
-  SpinSubmit.prototype.stop = function () {
-    this.original.text(this.originalText);
-    this.submit.removeClass('submit-spinner--spinning');
   }
 
   /*init*/
@@ -131,11 +132,10 @@ $(document).ready(function() {
       enableInputs();
       $('.results').show();
       $('.progress').fadeOut();
-      $('.btn-submit-check').text('Check another'); // Adjust text of submit button
       $('.results table').trigger('update')
         .trigger('appendCache')
         .trigger('sorton',[ [ [ 2,0 ], [ 0,0 ] ] ]); // Sort table
-      mySpinner.stop();
+      mySpinner.stop('Check another');
     });
   }
 
@@ -165,7 +165,7 @@ $(document).ready(function() {
       // Prevent form submission
       e.preventDefault();
 
-      mySpinner.start('Checking');
+      mySpinner.start('Checking...');
 
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance
@@ -175,7 +175,6 @@ $(document).ready(function() {
       disableInputs();
       // As well as prepare some other elements
       $('.alert-hint').hide();
-      $('.btn-submit-check').text('Checking...');
       startBlacklistProbes($('input#inputMailserverHost').val(), jsonObj);
     });
   });
