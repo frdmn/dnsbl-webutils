@@ -30,7 +30,8 @@ Temporary Items
 config.php
 
 # Logfiles
-logs/
+logs/*
+!logs/.gitkeep
 
 # build specific
 .sass-cache
