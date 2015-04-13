@@ -17,7 +17,7 @@
   } else {
     // Store action for later use
     $action = $_GET['action'];
-  }
+}
 ?>
 
 <!DOCTYPE html>

@@ -29,6 +29,9 @@ Temporary Items
 # Configuration file
 config.php
 
+# Logfiles
+logs/
+
 # build specific
 .sass-cache
 bower_components

@@ -1,6 +1,10 @@
 <?php
   /* Functions */
 
+  // Require functions file
+  require_once('../functions.php');
+  require_once('../config.php');
+
   // Function to probe a specific DNSBL
   function probe_dnsbl($host, $dnsbl) {
     // Check if first ($host) argument is set properly
@@ -50,6 +54,11 @@
   }
   if (!isset($_GET['dnsbl'])) {
     $error_message = '"dnsbl" GET request is missing';
+  }
+
+  // Log to file
+  if ($settings['logs']['enabled']) {
+    write_log($_GET['host'].",".$_GET['dnsbl'], '../logs/'.date("Y-m-d").'.txt');
   }
 
   // Create empty array
