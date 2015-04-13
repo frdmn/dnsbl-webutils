@@ -13,5 +13,7 @@ $settings['title'] = "DNSBL";
 // Design
 
 $theme['navbar-dark'] = false; // Enable dark theme for the navbar
+$theme['jumbotron'] = true; // Display jumbotron
+$theme['explanation'] = true; // DNSBL explanation in jumbotron
 
 ?>
