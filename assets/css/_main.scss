@@ -22,11 +22,18 @@ body {
 
 .submit-spinner--spinning{
   position: relative;
-  padding-left: 15px;
+  padding-left: 35px;
   .spinner {
+    top: 4px;
     display: inline-block;
-    margin-left: -15px;
+    margin-left: -30px;
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.spinner {
+  background: url('../img/spinner.gif');
+  width: 24px;
+  height: 24px;
 }
