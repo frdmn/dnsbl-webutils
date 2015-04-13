@@ -1,19 +1,23 @@
 <?php
 
-/**
-* This is the general configuaration file for dnsbl-webutils.
-**/
+  /**
+  * This is the general configuaration file for dnsbl-webutils.
+  **/
 
-date_default_timezone_set("Europe/Berlin"); // Set default timezone for date()
+  date_default_timezone_set("Europe/Berlin"); // Set default timezone for date()
 
-// General
+  // General
 
-$settings['title'] = "DNSBL";
+  $settings['title'] = "DNSBL";
 
-// Design
+  # Enable log files in "logs/"
+  # (make sure the web server is allowed to create files in that directory)
+  $settings['logs']['enabled'] = false;
 
-$theme['navbar-dark'] = false; // Enable dark theme for the navbar
-$theme['jumbotron'] = true; // Display jumbotron
-$theme['explanation'] = true; // DNSBL explanation in jumbotron
+  // Design
+
+  $theme['navbar-dark'] = false; // Enable dark theme for the navbar
+  $theme['jumbotron'] = true; // Display jumbotron
+  $theme['explanation'] = true; // DNSBL explanation in jumbotron
 
 ?>
