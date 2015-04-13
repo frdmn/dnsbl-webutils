@@ -6,7 +6,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -37,9 +36,3 @@ node_modules
 coverage
 .coveralls.yml
 npm-debug.log
-assets/fonts/*
-!assets/fonts/.gitkeep
-assets/css/style.css
-assets/js/modernizr.js
-assets/js/build.js
-assets/css/ladda-bootstrap.scss
