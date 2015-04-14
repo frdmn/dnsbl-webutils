@@ -41,4 +41,20 @@
       return array('status' => false, 'message' => 'Unable to open log '.$logfile.'!');
     }
   }
+
+  // Return current version
+  function returnVersion(){
+    global $settings;
+    if (file_exists(".git")) {
+      $gitref = shell_exec("git log -1 --pretty=format:'%h' --abbrev-commit");
+      if ($gitref) {
+        return "GIT-".$gitref;
+      }
+    } else {
+      $version = file_get_contents('./VERSION');
+      if ($version) {
+        return trim($version);
+      }
+    }
+  }
 ?>

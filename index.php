@@ -1,4 +1,8 @@
 <?php
+
+  // Include functions file
+  require_once('functions.php');
+
   // Include configuration file
   if (file_exists('config.php')) {
     require_once("config.php");
@@ -85,7 +89,7 @@
 
       <footer>
         <hr>
-        <p>Powered by <a href="https://github.com/frdmn/dnsbl-webutils" target="_blank">dnsbl-webutils</a> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
+        <p>Powered by <a href="https://github.com/frdmn/dnsbl-webutils" target="_blank">dnsbl-webutils</a> version <?= returnVersion(); ?> - &copy; <a href="http://frd.mn" target="_blank">frdmn</a> <?= date("Y"); ?></p>
       </footer>
     </div><!-- /.container -->
 
