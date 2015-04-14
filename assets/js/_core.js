@@ -91,8 +91,8 @@ $(document).ready(function() {
   }
 
   /*init*/
-  var spinnerInput = $('#spinner1')
-  , mySpinner = new SpinSubmit(spinnerInput);
+  var spinnerInput = $('#spinner')
+  , Spinner = new SpinSubmit(spinnerInput);
 
   // Enable inputs on page load
   enableInputs();
@@ -140,7 +140,8 @@ $(document).ready(function() {
         delete requests;
         /* jshint ignore:end */
         resetProgress();
-        enableInputs()
+        enableInputs();
+        Spinner.stop('Check another');
       });
 
       requests.push(promise);
@@ -154,7 +155,7 @@ $(document).ready(function() {
       $('.results table').trigger('update')
         .trigger('appendCache')
         .trigger('sorton',[ [ [ 2,0 ], [ 0,0 ] ] ]); // Sort table
-      mySpinner.stop('Check another');
+      Spinner.stop('Check another');
     });
   }
 
@@ -184,7 +185,7 @@ $(document).ready(function() {
       // Prevent form submission
       e.preventDefault();
 
-      mySpinner.start('Checking...');
+      Spinner.start('Checking...');
 
       // // instances, we can use at a later point
       // var $form = $(e.target) // The form instance
