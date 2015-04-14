@@ -46,11 +46,14 @@ $(document).ready(function() {
   function updateListingBadge(){
     /* jshint ignore:start */
     var listings = $(".results tbody tr:contains('Listed')").length;
-    if (listings > 0) {
-      $('.label-listings').show();
-      $('.label-listings').html(listings + ' listings');
+    $('.label-listings').html(listings + ' listings');
+
+    if (listings == 0) {
+      $('.label-listings').removeClass('label-danger');
+      $('.label-listings').addClass('label-success');
     } else {
-      $('.label-listings').hide();
+      $('.label-listings').removeClass('label-success');
+      $('.label-listings').addClass('label-danger');
     }
     /* jshint ignore:end */
   }
