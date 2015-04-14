@@ -51,7 +51,7 @@
             <tr>
               <th class="col-md-1">#</th>
               <th class="col-md-7">Blacklist</th>
-              <th class="col-md-4">Status <span class="label label-listings"></span> <span class="label label-errors label-danger"></span></th>
+              <th class="col-md-4">Status <span class="label label-listings"></span> <span class="label label-errors label-warning"></span></th>
             </tr>
           </thead>
           <tbody></tbody>
