@@ -4,11 +4,9 @@
     "0spam.fusionzero.com",
     "0spamtrust.fusionzero.com",
     "access.redhawk.org",
-    "all.ascc.dnsbl.bit.nl",
     "all.bl.blocklist.de",
     "all.dnsbl.bit.nl",
     "all.rbl.jp",
-    "all.s5h.net",
     "all.spamrats.com",
     "apache.bl.blocklist.de",
     "aspews.ext.sorbs.net",
@@ -120,7 +118,6 @@
     "l4.bbfh.ext.sorbs.net",
     "list.bbfh.org",
     "list.blogspambl.com",
-    "list.quorum.to",
     "lookup.dnsbl.iip.lu",
     "mail-abuse.blacklist.jippg.org",
     "mail.bl.blocklist.de",
@@ -135,14 +132,12 @@
     "ohps.dnsbl.net.au",
     "old.spam.dnsbl.sorbs.net",
     "omrs.dnsbl.net.au",
-    "origin.asn.cymru.com",
     "orvedb.aupads.org",
     "osps.dnsbl.net.au",
     "osrs.dnsbl.net.au",
     "owfs.dnsbl.net.au",
     "owps.dnsbl.net.au",
     "pbl.spamhaus.org",
-    "peer.asn.cymru.com",
     "phishing.rbl.msrbl.net",
     "pofon.foobar.hu",
     "probes.dnsbl.net.au",
@@ -237,7 +232,6 @@
     "xbl.spamhaus.org",
     "z.mailspike.net",
     "zen.spamhaus.org",
-    "zombie.dnsbl.sorbs.net",
-    "zz.countries.nerd.dk"
+    "zombie.dnsbl.sorbs.net"
   ]
 }
