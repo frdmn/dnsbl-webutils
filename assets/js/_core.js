@@ -45,9 +45,12 @@ $(document).ready(function() {
 
   function updateListingBadge(){
     /* jshint ignore:start */
-    var listings = $(".results tbody tr:contains('Listed')").length;
-    $('.label-listings').html(listings + ' listings');
 
+    // Count listings and errors
+    var listings = $(".results tbody tr:contains('Listed')").length
+    , errors = $(".results tbody tr:contains('Error')").length;
+
+    // If no listing, add success class, otherwise remove it
     if (listings == 0) {
       $('.label-listings').removeClass('label-danger');
       $('.label-listings').addClass('label-success');
@@ -55,6 +58,19 @@ $(document).ready(function() {
       $('.label-listings').removeClass('label-success');
       $('.label-listings').addClass('label-danger');
     }
+
+    // Show possible error label
+    if (errors > 0) {
+      $('.label-errors').show();
+      $('.label-errors').html(errors + ' errors');
+    } else {
+      $('.label-errors').hide();
+      $('.label-errors').html('');
+    }
+
+    // Update listings label
+    $('.label-listings').html(listings + ' listings');
+
     /* jshint ignore:end */
   }
 
