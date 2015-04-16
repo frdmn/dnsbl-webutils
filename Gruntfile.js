@@ -90,7 +90,8 @@ module.exports = function(grunt) {
                     , '<%= dirs.bower %>/jquery.tablesorter/dist/js/jquery.tablesorter.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/formValidation.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/framework/bootstrap.js'
-                    , '<%= dirs.js %>/*.js'
+                    , '<%= dirs.js %>/_SpinSubmit.js'
+                    , '<%= dirs.js %>/_check.js'
                     , '!<%= dirs.js %>/modernizr.js'
                     , '!<%= dirs.js %>/build.js'
                 ]
