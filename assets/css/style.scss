@@ -11,7 +11,9 @@ $icon-font-path: "../fonts/";
 /* Bower */
 @import 'bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
 
-/* Bower (grunt-copy) components */
+/* Libraries / components */
+
+@import 'SpinSubmit';
 
 /* Custom */
 @import 'main';

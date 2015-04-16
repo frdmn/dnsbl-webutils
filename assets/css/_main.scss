@@ -4,36 +4,3 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
-
-/* SpinSubmit */
-
-.submit-spinner {
-  position: relative;
-  overflow: hidden;
-  transition: .3s padding;
-  .spinner {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    transition: .3s transform;
-    transform: translateX(-20px);
-  }
-}
-
-.submit-spinner--spinning{
-  position: relative;
-  padding-left: 35px;
-  .spinner {
-    top: 4px;
-    display: inline-block;
-    margin-left: -30px;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.spinner {
-  background: url('../img/spinner.gif');
-  width: 24px;
-  height: 24px;
-}
