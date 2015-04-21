@@ -1,3 +1,7 @@
+# Lumen
 /lumen.log
 /vendor
 .env
+
+# Dashbrew (dev setup)
+.dashbrew
