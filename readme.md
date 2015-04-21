@@ -1,7 +1,7 @@
 dnsbl-webutils
 ==============
 
-[![Current tag](http://img.shields.io/github/tag/frdmn/webdns-utils.svg)](https://github.com/frdmn/webdns-utils/tags) [![Repository issues](http://issuestats.com/github/frdmn/webdns-utils/badge/issue)](http://issuestats.com/github/frdmn/webdns-utils) [![Flattr this repository](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=frdmn&url=https://github.com/frdmn/webdns-utils)
+[![Current tag](http://img.shields.io/github/tag/frdmn/dnsbl-webutils.svg)](https://github.com/frdmn/dnsbl-webutils/tags) [![Repository issues](http://issuestats.com/github/frdmn/dnsbl-webutils/badge/issue)](http://issuestats.com/github/frdmn/dnsbl-webutils) [![Flattr this repository](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=frdmn&url=https://github.com/frdmn/dnsbl-webutils)
 
 ![](http://up.frd.mn/4TzB9.png)
 
@@ -39,8 +39,8 @@ This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blackli
   `npm install`
 1. Download web libraries:  
   `bower install`
-1. Install PHP components:
-  `composer install
+1. Install PHP components:  
+  `composer install` 
 1. Compile assets:  
   `grunt dev` or `grunt`
   
