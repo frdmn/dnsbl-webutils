@@ -10,6 +10,7 @@ node_modules
 .env
 
 # dnsbl-webutils
+config/config.php
 public/assets/fonts
 public/assets/css/style.css
 public/assets/css/style.css.map

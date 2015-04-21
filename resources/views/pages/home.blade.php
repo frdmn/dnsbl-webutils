@@ -1,5 +1,9 @@
 @extends('layouts.default')
 @section('content')
+  @if (config('config.theme.jumbotron'))
+    @include('includes.jumbotron')
+  @endif
+
   <div class="alert alert-warning alert-dismissible alert-hint" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     Enter the IP address or hostname of your mail server below and hit <strong>Check</strong>.

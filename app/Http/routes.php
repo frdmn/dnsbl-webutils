@@ -11,18 +11,26 @@
 |
 */
 
+/* Configuration file */
+
+$app->configure('config');
+
+$app->settings = [
+  'title' => config('config.settings.title')
+];
+
 /* Frontend */
 
 $app->get('/', function() use ($app) {
-    return view('pages.home');
+    return view('pages.home', $app->settings);
 });
 
 $app->get('/api', function() use ($app) {
-    return view('pages.api');
+    return view('pages.api', $app->settings);
 });
 
 $app->get('/monitor', function() use ($app) {
-    return view('pages.monitor');
+    return view('pages.monitor', $app->settings);
 });
 
 /* API */

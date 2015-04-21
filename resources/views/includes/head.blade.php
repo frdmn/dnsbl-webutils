@@ -6,7 +6,7 @@
 <meta name="author" content="">
 <link rel="icon" href="assets/img/favicon.ico">
 
-<title>DNSBL - Check</title>
+<title>{{ $title }} - Check</title>
 
 <!-- Bootstrap core CSS -->
 <link href="assets/css/style.css" rel="stylesheet">
