@@ -29,7 +29,7 @@ node_modules
 #####=== Lumen ===#####
 /lumen.log
 /vendor
-.env
+# .env
 
 #####=== dnsbl-webutils ===#####
 config/config.php
