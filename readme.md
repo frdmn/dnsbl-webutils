@@ -1,17 +1,47 @@
-## Lumen PHP Framework
+dnsbl-webutils
+==============
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/downloads.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+![](http://up.frd.mn/4TzB9.png)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Web based and self hosted DNSBL (or RBL) utilities:
 
-## Official Documentation
+* __dnsbl-check__: Web based real time check against quite a few DNSBLs
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blacklists.aspx)'s monitor.
 
-### License
+### Requirements
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+* Web server (Nginx/Apache)
+* PHP (tested with 5.5)
+* Bower, Grunt, JSHint, JSCS (in case you build from master)
+
+### Installation
+
+##### Stable official release
+
+1. Click on [GitHub releases](https://github.com/frdmn/dnsbl-webutils/releases).
+1. Download the latest version.
+1. Extract in your document root.
+1. Copy and rename the default config to `config.php`:
+  `cp config.example.php config.php`
+
+##### Development git master branch
+
+1. Make sure you've installed `node` and `npm`
+1. Clone this repository:  
+  `https://github.com/frdmn/dnsbl-webutils.git`
+1. Open cloned repository:  
+  `cd dnsbl-webutils`
+1. Install requirements and dependencies:  
+  `npm install -g grunt-cli bower jshint jscs`
+  `npm install`
+1. Download web libraries:  
+  `bower install`
+1. Compile assets:  
+  `grunt dev` or `grunt`
+
+Caution: When using the `dev` argument, Grunt won't minify your JS or CSS, so it's easier to debug. Once you run `grunt` (without the `dev`), the files are minified!
+
+### Version
+
+1.1.0
