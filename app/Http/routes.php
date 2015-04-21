@@ -11,6 +11,8 @@
 |
 */
 
+/* Frontend */
+
 $app->get('/', function() use ($app) {
     return view('pages.home');
 });
@@ -22,3 +24,7 @@ $app->get('/api', function() use ($app) {
 $app->get('/monitor', function() use ($app) {
     return view('pages.monitor');
 });
+
+/* API */
+
+$app->get('/api/v1/check', 'App\Http\Controllers\ApiController@check');
