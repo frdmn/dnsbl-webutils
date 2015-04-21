@@ -10,7 +10,7 @@ module.exports = function(grunt) {
             bower: 'vendor/bower_components'
             , css: 'public/assets/css'
             , js: 'public/assets/js'
-            , images: 'public/assets/images'
+            , images: 'public/assets/img'
             , fonts: 'public/assets/fonts'
             , svg: 'public/assets/svg'
         }
