@@ -35,7 +35,7 @@ This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blackli
 1. Open cloned repository:  
   `cd dnsbl-webutils`
 1. Install requirements and dependencies:  
-  `npm install -g grunt-cli bower jshint jscs`
+  `npm install -g grunt-cli bower jshint jscs`  
   `npm install`
 1. Download web libraries:  
   `bower install`
