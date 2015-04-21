@@ -1,7 +1,13 @@
+# Dashbrew (dev setup)
+.dashbrew
+
+# Grunt
+node_modules
+
 # Lumen
 /lumen.log
 /vendor
 .env
 
-# Dashbrew (dev setup)
-.dashbrew
+# dnsbl-webutils
+public/assets/fonts
