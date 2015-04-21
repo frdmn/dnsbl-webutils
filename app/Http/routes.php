@@ -12,5 +12,13 @@
 */
 
 $app->get('/', function() use ($app) {
-    return $app->welcome();
+    return view('pages.home');
+});
+
+$app->get('/api', function() use ($app) {
+    return view('pages.api');
+});
+
+$app->get('/monitor', function() use ($app) {
+    return view('pages.monitor');
 });
