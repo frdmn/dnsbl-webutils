@@ -4,3 +4,11 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
+
+.progress {
+  transition: .3s opacity;
+}
+
+.progress--hidden {
+  opacity: 0;
+}

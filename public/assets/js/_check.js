@@ -77,7 +77,7 @@ $(document).ready(function() {
   enableInputs();
 
   // Hide progress bar
-  $('.progress').hide();
+  $('.progress').addClass('progress--hidden');
 
   // Initialize table sorter
   $('.results table').tablesorter();
@@ -86,7 +86,7 @@ $(document).ready(function() {
   var startBlacklistProbes = function (hostToCheck, obj) {
     $('.results tbody').html('');
     resetProgress();
-    $('.progress').show();
+    $('.progress').removeClass('progress--hidden');
     $('.results').show();
 
     var requests = [];
@@ -130,7 +130,7 @@ $(document).ready(function() {
     $.when.apply($, requests).done(function() {
       enableInputs();
       $('.results').show();
-      $('.progress').fadeOut();
+      $('.progress').addClass('progress--hidden');
       $('.results table').trigger('update')
         .trigger('appendCache')
         .trigger('sorton',[ [ [ 2,0 ], [ 0,0 ] ] ]); // Sort table
