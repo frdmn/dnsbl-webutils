@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+* [Lumen](http://lumen.laravel.com)! :+1:
+* Improve console debug output
+* Improve API
+
 ## 1.1.0
 * Rename project once again
 * Poor man's template engine
