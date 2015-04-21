@@ -11,3 +11,7 @@ node_modules
 
 # dnsbl-webutils
 public/assets/fonts
+public/assets/css/style.css
+public/assets/css/style.css.map
+public/assets/js/build.js
+public/assets/js/modernizr.js
