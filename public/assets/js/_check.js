@@ -92,20 +92,20 @@ $(document).ready(function() {
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
       var rowId = parseFloat(key) + parseFloat(1)
-      , promise = $.get('api/?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
+      , promise = $.get('/api/v1/check?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
         if (status === 'success') {
-          var jsonProbe = $.parseJSON(data);
-          if (jsonProbe.success === true) {
-            if (jsonProbe.payload.result === 200) {
-              console.log(hostToCheck + ': not listed on "' + jsonProbe.payload.dnsbl + '"');
-              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td>OK</td></tr>');
-            } else if (jsonProbe.payload.result === 300) {
-              console.log(hostToCheck + ': listed on "' + jsonProbe.payload.dnsbl + '"');
-              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + jsonProbe.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
+          if (data.success === true) {
+            console.log((key + 1) + '/' + obj.blacklists.length + ': ' +  hostToCheck + ' on "' + data.payload.dnsbl + '"');
+            if (data.payload.status === 200) {
+              console.log('==> ' + '%cnot listed', 'background: forestgreen; color: #fff');
+              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + data.payload.dnsbl + '</td><td>OK</td></tr>');
+            } else if (data.payload.status === 300) {
+              console.log('==> ' + '%clisted', 'background: tomato; color: #fff');
+              $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + data.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
             }
           } else {
-            console.log('Error: ' + jsonProbe.error);
-            $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + jsonProbe.error + '</td></tr>');
+            console.log('Error: ' + data.error);
+            $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + data.error + '</td></tr>');
           }
           updateProgress(countTableRows(), obj.blacklists.length);
           updateListingBadge();
