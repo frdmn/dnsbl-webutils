@@ -1,6 +1,8 @@
 dnsbl-webutils
 ==============
 
+[![Current tag](http://img.shields.io/github/tag/frdmn/webdns-utils.svg)](https://github.com/frdmn/webdns-utils/tags) [![Repository issues](http://issuestats.com/github/frdmn/webdns-utils/badge/issue)](http://issuestats.com/github/frdmn/webdns-utils) [![Flattr this repository](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=frdmn&url=https://github.com/frdmn/webdns-utils)
+
 ![](http://up.frd.mn/4TzB9.png)
 
 Web based and self hosted DNSBL (or RBL) utilities:
@@ -37,11 +39,13 @@ This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blackli
   `npm install`
 1. Download web libraries:  
   `bower install`
+1. Install PHP components:
+  `composer install
 1. Compile assets:  
   `grunt dev` or `grunt`
-
+  
 Caution: When using the `dev` argument, Grunt won't minify your JS or CSS, so it's easier to debug. Once you run `grunt` (without the `dev`), the files are minified!
 
 ### Version
 
-1.1.0
+1.2.0
