@@ -11,7 +11,7 @@
     </div><!--/.navbar-header -->
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class=""><a href="/">Check</a></li>
+        <li class="{{ (Request::is('/') ? 'active' : '') }}"><a href="/">Check</a></li>
         <li class=""><a href="/api">API</a></li>
         <li class=""><a href="/monitor">Monitor</a></li>
       </ul>
