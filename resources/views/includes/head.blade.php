@@ -10,3 +10,6 @@
 
 <!-- Bootstrap core CSS -->
 <link href="assets/css/style.css" rel="stylesheet">
+
+<script src="assets/js/modernizr.js"></script>
+
