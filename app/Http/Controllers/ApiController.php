@@ -2,6 +2,10 @@
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class ApiController extends BaseController
 {
@@ -55,6 +59,10 @@ class ApiController extends BaseController
    */
 
   public function check(){
+
+    $monolog = new Logger('log');
+    $monolog->pushHandler(new StreamHandler(storage_path('logs/dnsbl-'.date('Y-m-d').'.txt')), Logger::INFO);
+
     $host = Input::get('host');
     $dnsbl = Input::get('dnsbl');
 
@@ -89,6 +97,10 @@ class ApiController extends BaseController
     $json = array();
     $json['payload'] = $payload;
     $json['success'] = $success;
+
+    if (config('config.logs.enabled')) {
+      $monolog->addInfo('['.Request::ip().'] JSON result: ',$json);
+    }
 
     return response($json, 200, [ "Content-Type" => "application/json" ]);
   }
