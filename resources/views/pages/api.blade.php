@@ -1,10 +1,20 @@
 @extends('layouts.default')
 @section('content')
   <h1 class="page-header">API</h1>
+  <blockquote>
+    <p>Below you can find a few API calls that you can use to interact and communicate with <strong>dnsbl-webuitls</strong>.</p>
+  </blockquote>
 
-  <p>Bacon ipsum dolor amet meatloaf deserunt eiusmod sunt pork belly lorem minim id magna shank consequat tempor alcatra. Ham elit aute pastrami filet mignon venison ipsum porchetta cupidatat frankfurter. Laborum short ribs reprehenderit nulla. Sint et proident, ribeye meatball shank exercitation beef laboris tongue irure dolore aute nostrud. Drumstick shoulder hamburger, rump beef landjaeger frankfurter short ribs biltong chicken. Pork belly chuck sirloin dolore aliqua cillum. Proident dolore non culpa incididunt cow, esse eu in.</p>
-  <p>Swine enim laboris short ribs. Rump mollit beef, lorem shank est eu alcatra bacon sausage. Flank chicken commodo prosciutto tempor, ut adipisicing tail. Rump incididunt minim mollit excepteur in. Kielbasa cillum turducken, magna minim ullamco officia.</p>
-  <p>Deserunt duis exercitation ham hock bresaola, boudin adipisicing irure prosciutto pork ribeye eiusmod. Boudin short loin ut pariatur. Shankle dolore boudin shoulder, turkey meatloaf beef sirloin shank flank ribeye ut in spare ribs swine. Chuck minim exercitation porchetta doner salami in short ribs swine mollit t-bone aliqua. Alcatra jowl biltong sirloin irure magna adipisicing exercitation quis in do deserunt doner est veniam. Shoulder laborum ham hock fatback pork loin. In cillum shankle in ground round capicola tail hamburger.</p>
+  <h4>WIP: Check a hostname against a DNSBL</h4>
+  <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+  <div>
+    <div class="zero-clipboard"><span class="btn-clipboard">Request</span></div>
+    <div class="bs-example bs-example-get">
+      <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+    </div>
+    <div class="zero-clipboard"><span class="btn-clipboard">Response</span></div>
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ins&gt;</span>This line of text is meant to be treated as an addition to the document.<span class="nt">&lt;/ins&gt;</span></code></pre></div>
+  </div>
 
   <div class="clearfix"></div>
 @stop
