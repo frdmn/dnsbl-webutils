@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 class ApiController extends BaseController
 {
 
-  /*
+  /**
    * statusCodeMessage()
    *
    * Returns the specifc message of a given status code
@@ -27,7 +27,7 @@ class ApiController extends BaseController
     return $status_code_map[$status];
   }
 
-  /*
+  /**
    * probeDnsbl()
    *
    * Check a specific hostname against a specific DNSBL.
@@ -47,6 +47,12 @@ class ApiController extends BaseController
       return true;
     }
   }
+
+  /**
+   * Route function to catch "/api/v1/check"
+   * @param ignored
+   * @return JSON response
+   */
 
   public function check(){
     $host = Input::get('host');
