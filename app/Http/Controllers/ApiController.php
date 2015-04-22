@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
+
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
-
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -20,6 +20,7 @@ class ApiController extends BaseController
    */
 
   function statusCodeMessage($status){
+    // Status code <-> status message map
     $status_code_map = array(
       300 => 'DNSBL: listed',
       200 => 'DNSBL: not listed',
@@ -28,6 +29,7 @@ class ApiController extends BaseController
       403 => 'API/check: invalid input "host" GET parameter'
     );
 
+    // Return messages based on input status code
     return $status_code_map[$status];
   }
 
@@ -60,12 +62,15 @@ class ApiController extends BaseController
 
   public function check(){
 
+    // Initialte Monolog log stream
     $monolog = new Logger('log');
     $monolog->pushHandler(new StreamHandler(storage_path('logs/dnsbl-'.date('Y-m-d').'.txt')), Logger::INFO);
 
+    // Store input GET parameters
     $host = Input::get('host');
     $dnsbl = Input::get('dnsbl');
 
+    // Return error if empty
     if (empty($host)) {
       $status = 401;
     }
@@ -74,6 +79,7 @@ class ApiController extends BaseController
       $status = 402;
     }
 
+    // Probe against DNSBL
     if (!isset($status)) {
       if (!$this->probeDnsbl($host, $dnsbl)) {
         $status = 300;
@@ -82,12 +88,14 @@ class ApiController extends BaseController
       }
     }
 
+    // Check if successful
     if ($status > 300) {
       $success = false;
     } else {
       $success = true;
     }
 
+    // Create payload object
     $payload = array();
     $payload['host'] = $host;
     $payload['dnsbl'] = $dnsbl;
@@ -98,10 +106,12 @@ class ApiController extends BaseController
     $json['payload'] = $payload;
     $json['success'] = $success;
 
+    // Log API call if enabled in config
     if (config('config.logs.enabled')) {
       $monolog->addInfo('['.Request::ip().'] JSON result: ',$json);
     }
 
+    // And finally return the JSON response
     return response($json, 200, [ "Content-Type" => "application/json" ]);
   }
 }
