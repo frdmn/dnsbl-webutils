@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-  <h3>API</h3>
+  <h1 class="page-header">API</h1>
 
   <p>Bacon ipsum dolor amet meatloaf deserunt eiusmod sunt pork belly lorem minim id magna shank consequat tempor alcatra. Ham elit aute pastrami filet mignon venison ipsum porchetta cupidatat frankfurter. Laborum short ribs reprehenderit nulla. Sint et proident, ribeye meatball shank exercitation beef laboris tongue irure dolore aute nostrud. Drumstick shoulder hamburger, rump beef landjaeger frankfurter short ribs biltong chicken. Pork belly chuck sirloin dolore aliqua cillum. Proident dolore non culpa incididunt cow, esse eu in.</p>
   <p>Swine enim laboris short ribs. Rump mollit beef, lorem shank est eu alcatra bacon sausage. Flank chicken commodo prosciutto tempor, ut adipisicing tail. Rump incididunt minim mollit excepteur in. Kielbasa cillum turducken, magna minim ullamco officia.</p>
