@@ -1,19 +1,32 @@
 @extends('layouts.default')
 @section('content')
   <h1 class="page-header">API</h1>
-  <blockquote>
-    <p>Below you can find a few API calls that you can use to interact and communicate with <strong>dnsbl-webuitls</strong>.</p>
-  </blockquote>
+  <p>Below you can find a few API calls that you can use to interact and communicate with <strong>dnsbl-webuitls</strong>.</p>
 
-  <h4>WIP: Check a hostname against a DNSBL</h4>
-  <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
+  <h3 class="page-header">Check a hostname against a DNSBL <small>(Work in progress!)</small></h3>
   <div>
     <div class="zero-clipboard"><span class="btn-clipboard">Request</span></div>
     <div class="bs-example bs-example-get">
-      <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+      <pre>/api/v1/check?host=<strong>[hostname.tld]</strong>&dnsbl=<strong>[dnsbl.host.tld]</strong></pre>
+      <dl class="dl-horizontal">
+        <dt><code>host</code></dt><dd>Hostname or IP of the mailserver to check</dd>
+        <dt><code>dnsbl</code></dt><dd>Hostname or IP of the DNSBL server</dd>
+      </dl>
     </div>
     <div class="zero-clipboard"><span class="btn-clipboard">Response</span></div>
-    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ins&gt;</span>This line of text is meant to be treated as an addition to the document.<span class="nt">&lt;/ins&gt;</span></code></pre></div>
+    <div class="highlight">
+      <pre>
+        <code class="language-html" data-lang="html">{
+  payload: {
+    host: "127.0.0.2",
+    dnsbl: "access.redhawk.org",
+    result: "DNSBL: listed",
+    status: 300
+  },
+  success: true
+}        </code>
+      </pre>
+    </div>
   </div>
 
   <div class="clearfix"></div>
