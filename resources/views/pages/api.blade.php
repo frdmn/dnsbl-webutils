@@ -16,7 +16,7 @@
     <div class="zero-clipboard"><span class="btn-clipboard">Response</span></div>
     <div class="highlight">
       <pre>
-        <code class="language-html" data-lang="html">{
+        <code class="language-javascript">{
   payload: {
     host: "127.0.0.2",
     dnsbl: "access.redhawk.org",

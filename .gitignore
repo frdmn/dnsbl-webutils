@@ -36,5 +36,6 @@ config/config.php
 public/assets/fonts
 public/assets/css/style.css
 public/assets/css/style.css.map
+public/assets/css/_prism.scss
 public/assets/js/build.js
 public/assets/js/modernizr.js

@@ -90,6 +90,7 @@ module.exports = function(grunt) {
                     , '<%= dirs.bower %>/jquery.tablesorter/dist/js/jquery.tablesorter.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/formValidation.js'
                     , '<%= dirs.bower %>/form.validation/dist/js/framework/bootstrap.js'
+                    , '<%= dirs.bower %>/prism/prism.js'
                     , '<%= dirs.js %>/_SpinSubmit.js'
                     , '<%= dirs.js %>/_check.js'
                     , '!<%= dirs.js %>/modernizr.js'
@@ -171,7 +172,8 @@ module.exports = function(grunt) {
         , copy: {
           main: {
             files: [
-              { expand: true, cwd: '<%= dirs.bower %>/bootstrap-sass-official/assets/fonts/bootstrap/', src: [ '**' ], dest: '<%= dirs.fonts %>' },
+              { expand: true, cwd: '<%= dirs.bower %>/bootstrap-sass-official/assets/fonts/bootstrap/', src: [ '**' ], dest: '<%= dirs.fonts %>' }
+              ,{ expand: true, cwd: '<%= dirs.bower %>/prism/themes/', src: [ 'prism.css' ], dest: '<%= dirs.css %>', rename: function(dest) { return dest + '/_prism.scss'; } }
             ]
           }
         }
