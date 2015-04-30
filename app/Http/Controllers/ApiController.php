@@ -115,6 +115,8 @@ class ApiController extends BaseController
       // Otherwise check if it's a valid hostname
       if (!$this->isValidHostname($hostname)) {
         $status = 402;
+      } else {
+        $hostname = gethostbyname($hostname);
       }
     }
 
