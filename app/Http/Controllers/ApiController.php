@@ -24,7 +24,8 @@ class ApiController extends BaseController
     $status_code_map = array(
       300 => 'DNSBL: listed',
       200 => 'DNSBL: not listed',
-      403 => 'API/probe: invalid input "host" GET parameter'
+      401 => 'API/probe: invalid IP in "hostname" GET parameter',
+      402 => 'API/probe: invalid hostname input "hostname" GET parameter'
     );
 
     // Return messages based on input status code
@@ -53,16 +54,69 @@ class ApiController extends BaseController
   }
 
   /**
+   * isValidIP()
+   *
+   * Small function to check if input
+   * is a valid IPv4 address
+   *
+   * @param string $ip IPv4 address
+   * @return bool
+   */
+
+  function isValidIP($ip){
+    // Regex
+    $validIpRegex = '^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$';
+
+    // Check if valid IP
+    if (preg_match("/$validIpRegex/", $ip)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * isValidHostname()
+   *
+   * Small function to check if input
+   * is a valid hostname
+   *
+   * @param string $hostname
+   * @return bool
+   */
+
+  function isValidHostname($hostname){
+    // Check if valid hostname
+    if (checkdnsrr($hostname)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
    * Route function to catch "/api/v1/probe/:hostname/:dnsbl"
    * @param ignored
    * @return JSON response
    */
 
   public function probe($hostname, $dnsbl){
-
     // Initialte Monolog log stream
     $monolog = new Logger('log');
     $monolog->pushHandler(new StreamHandler(storage_path('logs/dnsbl-'.date('Y-m-d').'.txt')), Logger::INFO);
+
+    // Check if $hostname is an IP address
+    if (is_numeric(str_replace('.', '', $hostname))) {
+      // Check if it's valid
+      if (!$this->isValidIP($hostname)) {
+        $status = 401;
+      }
+    } else {
+      // Otherwise check if it's a valid hostname
+      if (!$this->isValidHostname($hostname)) {
+        $status = 402;
+      }
+    }
 
     // Probe against DNSBL
     if (!isset($status)) {
