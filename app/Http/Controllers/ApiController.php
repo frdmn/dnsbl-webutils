@@ -24,9 +24,7 @@ class ApiController extends BaseController
     $status_code_map = array(
       300 => 'DNSBL: listed',
       200 => 'DNSBL: not listed',
-      401 => 'API/check: missing "host" GET parameter',
-      402 => 'API/check: missing "dnsbl" GET parameter',
-      403 => 'API/check: invalid input "host" GET parameter'
+      403 => 'API/probe: invalid input "host" GET parameter'
     );
 
     // Return messages based on input status code
@@ -55,33 +53,20 @@ class ApiController extends BaseController
   }
 
   /**
-   * Route function to catch "/api/v1/check"
+   * Route function to catch "/api/v1/probe/:hostname/:dnsbl"
    * @param ignored
    * @return JSON response
    */
 
-  public function check(){
+  public function probe($hostname, $dnsbl){
 
     // Initialte Monolog log stream
     $monolog = new Logger('log');
     $monolog->pushHandler(new StreamHandler(storage_path('logs/dnsbl-'.date('Y-m-d').'.txt')), Logger::INFO);
 
-    // Store input GET parameters
-    $host = Input::get('host');
-    $dnsbl = Input::get('dnsbl');
-
-    // Return error if empty
-    if (empty($host)) {
-      $status = 401;
-    }
-
-    if (empty($dnsbl)) {
-      $status = 402;
-    }
-
     // Probe against DNSBL
     if (!isset($status)) {
-      if (!$this->probeDnsbl($host, $dnsbl)) {
+      if (!$this->probeDnsbl($hostname, $dnsbl)) {
         $status = 300;
       } else {
         $status = 200;
@@ -97,7 +82,7 @@ class ApiController extends BaseController
 
     // Create payload object
     $payload = array();
-    $payload['host'] = $host;
+    $payload['host'] = $hostname;
     $payload['dnsbl'] = $dnsbl;
     $payload['result'] = $this->statusCodeMessage($status);
     $payload['status'] = $status;

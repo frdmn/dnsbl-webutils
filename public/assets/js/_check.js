@@ -92,7 +92,7 @@ $(document).ready(function() {
     var requests = [];
     $.each(obj.blacklists, function(key, value) {
       var rowId = parseFloat(key) + parseFloat(1)
-      , promise = $.get('/api/v1/check?dnsbl=' + value + '&host=' + hostToCheck, function(data, status) {
+      , promise = $.get('/api/v1/probe/' + hostToCheck + '/' + value, function(data, status) {
         if (status === 'success') {
           if (data.success === true) {
             console.log((key + 1) + '/' + obj.blacklists.length + ': ' +  hostToCheck + ' on "' + data.payload.dnsbl + '"');

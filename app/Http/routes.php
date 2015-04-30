@@ -36,4 +36,4 @@ $app->get('/monitor', function() use ($app) {
 
 /* API */
 
-$app->get('/api/v1/check', 'App\Http\Controllers\ApiController@check');
+$app->get('/api/v1/probe/{hostname}/{dnsbl}', 'App\Http\Controllers\ApiController@probe');
