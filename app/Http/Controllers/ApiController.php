@@ -96,7 +96,8 @@ class ApiController extends BaseController
 
   /**
    * Route function to catch "/api/v1/probe/:hostname/:dnsbl"
-   * @param ignored
+   * @param string :hostname hostname/IP to check
+   * @param string :dnsbl DNSBL to check against
    * @return JSON response
    */
 
