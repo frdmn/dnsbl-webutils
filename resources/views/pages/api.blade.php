@@ -27,7 +27,7 @@
   },
   "payload": [
     {
-      "dnsbl": "0spam-killlist.fusionzero.com",
+      "dnsbl": "access.redhawk.org",
       "result": "DNSBL: not listed",
       "status": 200
     },
@@ -53,13 +53,13 @@
     <div class="highlight">
       <pre>
         <code class="language-javascript">{
-  payload: {
-    host: "127.0.0.2",
-    dnsbl: "access.redhawk.org",
-    result: "DNSBL: listed",
-    status: 300
-  },
-  success: true
+  "success": true,
+  "payload": {
+    "hostname": "127.0.0.2",
+    "dnsbl": "access.redhawk.org",
+    "result": "DNSBL: listed",
+    "status": 300
+  }
 }        </code>
       </pre>
     </div>

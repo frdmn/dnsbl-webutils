@@ -237,14 +237,14 @@ class ApiController extends BaseController
 
     // Create payload object
     $payload = array();
-    $payload['host'] = $hostname;
+    $payload['hostname'] = $hostname;
     $payload['dnsbl'] = $dnsbl;
     $payload['result'] = $this->statusCodeMessage($status);
     $payload['status'] = $status;
 
     $json = array();
-    $json['payload'] = $payload;
     $json['success'] = $success;
+    $json['payload'] = $payload;
 
     // Log API call if enabled in config
     if (config('config.logs.enabled')) {
