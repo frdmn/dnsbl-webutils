@@ -22,7 +22,8 @@
     "execution_time": 4410,
     "dnsbls_total": 233,
     "dnsbls_ok": 229,
-    "dnsbls_listed": 4
+    "dnsbls_listed": 4,
+    "hostname": "127.0.0.2"
   },
   "payload": [
     {

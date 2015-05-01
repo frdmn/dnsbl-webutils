@@ -177,6 +177,7 @@ class ApiController extends BaseController
     } else {
       $information['dnsbls_ok'] = $sucess_probes;
       $information['dnsbls_listed'] = $failed_probes;
+      $information['hostname'] = $hostname;
       $json['information'] = $information;
     }
 
