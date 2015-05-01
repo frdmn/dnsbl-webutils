@@ -36,4 +36,8 @@ $app->get('/monitor', function() use ($app) {
 
 /* API */
 
+// Check a hostname against all DNSBLs
+$app->get('/api/v1/check/{hostname}', 'App\Http\Controllers\ApiController@check');
+
+// Probe a specific hostname against a DNSBL
 $app->get('/api/v1/probe/{hostname}/{dnsbl}', 'App\Http\Controllers\ApiController@probe');

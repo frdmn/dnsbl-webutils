@@ -95,6 +95,103 @@ class ApiController extends BaseController
   }
 
   /**
+   * Route function to catch "/api/v1/check/:hostname"
+   * @param string :hostname hostname/IP to check
+   * @return JSON response
+   */
+
+  public function check($hostname){
+    // Initialte Monolog log stream
+    $monolog = new Logger('log');
+    $monolog->pushHandler(new StreamHandler(storage_path('logs/dnsbl-'.date('Y-m-d').'.txt')), Logger::INFO);
+
+    // Start timer to meassure execution time
+    $time_start = microtime(true);
+
+    // Initiate variables and arrays
+    $success = true;
+    $failed_probes = 0;
+    $sucess_probes = 0;
+    $json = array();
+    $information = array();
+    $dnsbl_json = array();
+
+    // Check if $hostname is an IP address
+    if (is_numeric(str_replace('.', '', $hostname))) {
+      // Check if it's valid
+      if (!$this->isValidIP($hostname)) {
+        $status = 401;
+        $success = false;
+      }
+    } else {
+      // Otherwise check if it's a valid hostname
+      if (!$this->isValidHostname($hostname)) {
+        $status = 402;
+        $success = false;
+      } else {
+        // Resolve $hostname to IP
+        $hostname = gethostbyname($hostname);
+      }
+    }
+
+    // Load DNSBLs from public/ folder
+    $dnsbls = json_decode(file_get_contents(storage_path().'/../public/dnsbl.json'));
+
+    // Loop over DNSBLs if success is still true
+    if ($success) {
+      foreach ($dnsbls->blacklists as $dnsbl) {
+        // Probe against DNSBL
+        if (!$this->probeDnsbl($hostname, $dnsbl)) {
+          $status = 300;
+          ++$failed_probes;
+        } else {
+          $status = 200;
+          ++$sucess_probes;
+        }
+
+        // Create payload object
+        $payload = array();
+        $payload['dnsbl'] = $dnsbl;
+        $payload['result'] = $this->statusCodeMessage($status);
+        $payload['status'] = $status;
+
+        array_push($dnsbl_json, $payload);
+      }
+    }
+
+    // Stop timer to meassure execution time
+    $time_end = microtime(true);
+
+    // Add data to $information
+    $information['execution_time'] = round(($time_end - $time_start) * 1000);
+    $information['dnsbls_total'] = count($dnsbls->blacklists);
+
+    // Add data to $json
+    $json['success'] = $success;
+
+    // Check if successful
+    if (!$success) {
+      $json['status'] = $status;
+      $json['error'] = $this->statusCodeMessage($status);
+      $json['information'] = $information;
+    } else {
+      $information['dnsbls_ok'] = $sucess_probes;
+      $information['dnsbls_listed'] = $failed_probes;
+      $json['information'] = $information;
+    }
+
+    $json['payload'] = $dnsbl_json;
+
+    // Log API call if enabled in config
+    if (config('config.logs.enabled')) {
+      $monolog->addInfo('['.Request::ip().'] JSON result: ',$json);
+    }
+
+    // And finally return the JSON response
+    return response($json, 200, [ "Content-Type" => "application/json" ]);
+  }
+
+  /**
    * Route function to catch "/api/v1/probe/:hostname/:dnsbl"
    * @param string :hostname hostname/IP to check
    * @param string :dnsbl DNSBL to check against
