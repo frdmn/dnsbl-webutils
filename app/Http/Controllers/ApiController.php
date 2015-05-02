@@ -22,10 +22,10 @@ class ApiController extends BaseController
   function statusCodeMessage($status){
     // Status code <-> status message map
     $status_code_map = array(
-      300 => 'DNSBL: listed',
-      200 => 'DNSBL: not listed',
-      401 => 'API/probe: invalid IP in "hostname" GET parameter',
-      402 => 'API/probe: invalid hostname input "hostname" GET parameter'
+      300 => 'listed',
+      200 => 'not listed',
+      401 => 'invalid IP',
+      402 => 'invalid hostname'
     );
 
     // Return messages based on input status code
