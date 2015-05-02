@@ -104,8 +104,8 @@ $(document).ready(function() {
               $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + data.payload.dnsbl + '</td><td class="bg-danger">Listed</td></tr>');
             }
           } else {
-            console.log('Error: ' + data.error);
-            $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + data.error + '</td></tr>');
+            console.log('==> ' + '%cerror: ' + data.payload.status + ': ' + data.payload.result, 'background: tomato; color: #fff');
+            $('.results table > tbody').append('<tr><th scope="row">' + rowId + '</th><td>' + value + '</td><td class="bg-danger">Error: ' + data.payload.result + '</td></tr>');
           }
           updateProgress(countTableRows(), obj.blacklists.length);
           updateListingBadge();
