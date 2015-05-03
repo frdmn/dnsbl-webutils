@@ -194,7 +194,7 @@ class ApiController extends BaseController
 
     // Log API call if enabled in config
     if (config('config.logs.enabled')) {
-      $monolog->addInfo('['.Request::ip().'] JSON result: ',$json);
+      $monolog->addInfo('['.Request::ip().'] [/check] JSON result: ', $information);
     }
 
     // And finally return the JSON response
@@ -257,7 +257,7 @@ class ApiController extends BaseController
 
     // Log API call if enabled in config
     if (config('config.logs.enabled')) {
-      $monolog->addInfo('['.Request::ip().'] JSON result: ',$json);
+      $monolog->addInfo('['.Request::ip().'] [/probe] JSON result: ', $json);
     }
 
     // And finally return the JSON response
