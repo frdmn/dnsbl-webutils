@@ -24,10 +24,11 @@ This can be used as free alternative to [MXtoolbox](http://mxtoolbox.com/blackli
 
 1. Click on [GitHub releases](https://github.com/frdmn/dnsbl-webutils/releases).
 1. Download the latest version.
-1. Extract in your document root.
 1. Copy and rename the default config to `config.php`:
   `cp config.example.php config.php`
 1. Set your web servers document root to "public/"!
+1. Install PHP components using Composer:  
+  `composer install` 
 
 ##### Development git master branch
 
