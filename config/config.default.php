@@ -25,5 +25,9 @@ return [
     'navbar-dark' => false,
     'jumbotron' => true,
     'explanation' => true,
+  ],
+
+  'api' => [
+    'check' => true
   ]
 ];

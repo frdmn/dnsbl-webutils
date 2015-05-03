@@ -25,7 +25,8 @@ class ApiController extends BaseController
       300 => 'listed',
       200 => 'not listed',
       401 => 'invalid IP',
-      402 => 'invalid hostname'
+      402 => 'invalid hostname',
+      403 => 'API disabled'
     );
 
     // Return messages based on input status code
@@ -116,21 +117,29 @@ class ApiController extends BaseController
     $information = array();
     $dnsbl_json = array();
 
+    // Check if /check API is allowed
+    if (!config('config.api.check')) {
+      $status = 403;
+      $success = false;
+    }
+
     // Check if $hostname is an IP address
-    if (is_numeric(str_replace('.', '', $hostname))) {
-      // Check if it's valid
-      if (!$this->isValidIP($hostname)) {
-        $status = 401;
-        $success = false;
-      }
-    } else {
-      // Otherwise check if it's a valid hostname
-      if (!$this->isValidHostname($hostname)) {
-        $status = 402;
-        $success = false;
+    if ($success) {
+      if (is_numeric(str_replace('.', '', $hostname))) {
+        // Check if it's valid
+        if (!$this->isValidIP($hostname)) {
+          $status = 401;
+          $success = false;
+        }
       } else {
-        // Resolve $hostname to IP
-        $hostname = gethostbyname($hostname);
+        // Otherwise check if it's a valid hostname
+        if (!$this->isValidHostname($hostname)) {
+          $status = 402;
+          $success = false;
+        } else {
+          // Resolve $hostname to IP
+          $hostname = gethostbyname($hostname);
+        }
       }
     }
 
