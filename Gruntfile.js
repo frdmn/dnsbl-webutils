@@ -1,4 +1,8 @@
 module.exports = function(grunt) {
+
+    var name = 'webdns-utils'
+    , version = grunt.file.read('VERSION').trim();
+
     require('load-grunt-tasks')(grunt);
     require('phplint').gruntPlugin(grunt);
 
@@ -13,6 +17,7 @@ module.exports = function(grunt) {
             , images: 'public/assets/img'
             , fonts: 'public/assets/fonts'
             , svg: 'public/assets/svg'
+            , dist: 'dist'
         }
 
         /*
@@ -176,6 +181,11 @@ module.exports = function(grunt) {
               ,{ expand: true, cwd: '<%= dirs.bower %>/prism/themes/', src: [ 'prism.css' ], dest: '<%= dirs.css %>', rename: function(dest) { return dest + '/_prism.scss'; } }
             ]
           }
+          , release: {
+            files: [
+              { expand: true, cwd: './', src: [ '**', '!node_modules/**', '!vendor/**', '!config/config.php', '!<%= dirs.css %>/*.scss', '!<%= dirs.js %>/_*.js', '!<%= dirs.dist %>' ], dest: '<%= dirs.dist %>' }
+            ]
+          }
         }
 
         /*
@@ -202,6 +212,33 @@ module.exports = function(grunt) {
           }
           , files: [ '*.php' ]
         }
+
+        /*
+         * clean
+         * empty dist/ folder before release
+         */
+
+        , clean: [ '<%= dirs.dist %>' ]
+
+        /*
+         * compress
+         * create archive for GitHub release
+         */
+
+        , compress: {
+            main: {
+              options: {
+                archive: function () {
+                  // The global value git.tag is set by another task
+                  return name + '-v' + version + '.zip'
+                }
+              }
+              , files: [
+                { src: [ '<%= dirs.dist %>/*' ] } // includes files in path
+              ]
+            }
+          }
+
 
         /*
          * Watch
@@ -238,6 +275,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', [ 'copy', 'sass:build', 'autoprefixer', 'concat', 'uglify', 'imagemin', 'jscs', 'phplint' ]);
-    grunt.registerTask('dev', [ 'copy', 'connect', 'watch' ]);
+    grunt.registerTask('default', [ 'copy:main', 'sass:build', 'autoprefixer', 'concat', 'uglify', 'imagemin', 'jscs', 'phplint' ]);
+    grunt.registerTask('dev', [ 'copy:main', 'connect', 'watch' ]);
+    grunt.registerTask('release', [ 'copy:release', 'compress', 'clean' ]);
 };

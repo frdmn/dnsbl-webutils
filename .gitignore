@@ -32,6 +32,7 @@ node_modules
 # .env
 
 #####=== dnsbl-webutils ===#####
+dist/
 config/config.php
 public/assets/fonts
 public/assets/css/style.css
