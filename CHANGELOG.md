@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0
+
+* Documenting functions
+* Logging using Lumen
+* Facelift API page :nail_care:
+* Add new API end poing (`/api/v1/probe/[:hostname]/[:dnsbl]`)
+* If input is hostname, resolve to IP
+* Return proper error messages
+* Add feature to disable specific API end points (e.g. demo purposes)
+* Switch license to [MIT](LICENSE)
+
 ## 1.2.0
 
 * [Lumen](http://lumen.laravel.com)! :+1:
